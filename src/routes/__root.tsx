@@ -84,7 +84,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Pietermaritzburg's newest family practice. Comprehensive general practice, paediatrics, minor procedures, aesthetics and occupational health. Now accepting new patients.",
       },
       { name: "author", content: "Life Point Medical Center" },
-      { property: "og:title", content: "Life Point Medical Center — Family GP Practice" },
+      { property: "og:title", content: "Life Point Medical Center — Family GP Practice | Pietermaritzburg" },
       {
         property: "og:description",
         content:
@@ -93,6 +93,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "Life Point Medical Center" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Life Point Medical Center — Family GP Practice | Pietermaritzburg" },
+      { name: "description", content: "Pietermaritzburg's newest family practice. Comprehensive general practice, paediatrics, minor procedures, aesthetics and occupational health. Now accepting new patients." },
+      { property: "og:description", content: "Pietermaritzburg's newest family practice. Comprehensive general practice, paediatrics, minor procedures, aesthetics and occupational health. Now accepting new patients." },
+      { name: "twitter:description", content: "Pietermaritzburg's newest family practice. Comprehensive general practice, paediatrics, minor procedures, aesthetics and occupational health. Now accepting new patients." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/c0844561-1126-4268-aba2-328f6f53e3e5/id-preview-9bc56c9b--a151b9c2-cdcd-4001-b4d7-7ae07942bcb8.lovable.app-1783444769251.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/c0844561-1126-4268-aba2-328f6f53e3e5/id-preview-9bc56c9b--a151b9c2-cdcd-4001-b4d7-7ae07942bcb8.lovable.app-1783444769251.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
