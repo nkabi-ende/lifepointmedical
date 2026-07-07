@@ -1413,3 +1413,14 @@ section{ padding:7rem 2rem; }
     .hero-ctas, .contact-actions{ flex-direction:column; }
     .hero-ctas .btn, .contact-actions .btn{ width:100%; }
 }
+
+/* About monogram (privacy-safe portrait replacement) */
+.about-monogram{
+  aspect-ratio: 4/5; width: 100%;
+  display:flex; align-items:center; justify-content:center;
+  background: linear-gradient(160deg, #f5f6f7 0%, #eef1f4 60%, #e6ecf1 100%);
+  color: var(--navy);
+  border: 1px solid var(--grey-border);
+}
+.about-monogram svg{ width: 62%; height:auto; color: var(--navy); }
+.about-monogram svg circle[fill="currentColor"]{ color: var(--teal); }

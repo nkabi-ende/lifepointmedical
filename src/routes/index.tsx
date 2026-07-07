@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 
 import logoAsset from "@/assets/lifepoint-logo.png.asset.json";
-import drPortrait from "@/assets/dr-mncwango.jpg";
+
 
 export const Route = createFileRoute("/")({
   component: LifePointHome,
@@ -160,7 +160,7 @@ function LifePointHome() {
           </button>
           <div className={`nav-links${menuOpen ? " active" : ""}`}>
             <a href="#services" className="nav-link" onClick={handleNav("services")}>Services</a>
-            <a href="#about" className="nav-link" onClick={handleNav("about")}>About Dr. Mncwango</a>
+            <a href="#about" className="nav-link" onClick={handleNav("about")}>About the Practice</a>
             <a href="#location" className="nav-link" onClick={handleNav("location")}>Location</a>
             <a href="#contact" className="nav-link" onClick={handleNav("contact")}>Contact</a>
             <a href="#contact" className="btn btn-outline btn-sm" onClick={handleNav("contact")}>
@@ -524,7 +524,7 @@ function LifePointHome() {
               <h4>Practice</h4>
               <ul>
                 <li><a href="#services" onClick={handleNav("services")}>Services</a></li>
-                <li><a href="#about" onClick={handleNav("about")}>About Dr. Mncwango</a></li>
+                <li><a href="#about" onClick={handleNav("about")}>About the Practice</a></li>
                 <li><a href="#patient-info" onClick={handleNav("patient-info")}>Patient Info</a></li>
                 <li><a href="#contact" onClick={handleNav("contact")}>Book Appointment</a></li>
               </ul>
