@@ -97,12 +97,12 @@ const services = [
 ];
 
 const credentials = [
-  { title: "MBChB", sub: "University of Pretoria, 2018" },
-  { title: "Basic Surgical Skills", sub: "University of Pretoria" },
+  { title: "MBChB Qualified", sub: "Registered medical practitioner" },
+  { title: "Basic Surgical Skills", sub: "Accredited training" },
   { title: "BLS & ACLS Accredited", sub: "Current certification" },
-  { title: "Occupational Health", sub: "Postgraduate candidate, UKZN" },
+  { title: "Occupational Health", sub: "Postgraduate training" },
   { title: "Multilingual Care", sub: "isiZulu, English, Spanish" },
-  { title: "7+ Years Experience", sub: "Major KZN hospitals" },
+  { title: "Broad Hospital Experience", sub: "Multi-disciplinary training" },
 ];
 
 function LifePointHome() {
