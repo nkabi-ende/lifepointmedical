@@ -216,29 +216,34 @@ function LifePointHome() {
           <div className="about-grid">
             <div className="about-visual reveal">
               <div className="about-frame double-frame">
-                <img src={drPortrait} alt="Dr. Terrence Funokuhle Mncwango" className="about-portrait" width={1024} height={1280} loading="lazy" />
-                <div className="about-name">Dr. Terrence Funokuhle Mncwango</div>
-                <div className="about-title">MBChB (UP) · Family Physician</div>
+                <div className="about-monogram" aria-hidden="true">
+                  <svg viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="60" cy="60" r="52" opacity="0.15" />
+                    <path d="M18 62 h18 l6 -14 l10 28 l8 -20 l6 12 h36" />
+                    <circle cx="86" cy="68" r="3.5" fill="currentColor" stroke="none" />
+                  </svg>
+                </div>
+                <div className="about-name">Your Family Physician</div>
+                <div className="about-title">MBChB · Family Practice</div>
               </div>
             </div>
             <div className="about-content">
-              <span className="label reveal">About Dr. Mncwango</span>
+              <span className="label reveal">About the Practice</span>
               <div className="hairline reveal"></div>
               <h2 className="reveal reveal-delay-1">A physician built for whole-family care.</h2>
               <div className="about-text reveal reveal-delay-1">
                 <p>
-                  Dr. Terrence Funokuhle Mncwango graduated with an MBChB from the University of
-                  Pretoria in 2018 and has since built a broad, rigorous clinical foundation across
-                  KwaZulu-Natal's major hospitals. His training spans internal medicine, surgery,
-                  paediatrics, orthopaedics, anaesthesia, family medicine, and obstetrics &
-                  gynaecology — giving him the depth to treat patients of all ages with confidence
-                  and care.
+                  Life Point is led by an MBChB-qualified family physician with a broad, rigorous
+                  clinical foundation built across major KwaZulu-Natal hospitals. Training spans
+                  internal medicine, surgery, paediatrics, orthopaedics, anaesthesia, family
+                  medicine, and obstetrics & gynaecology — giving the depth to treat patients of
+                  all ages with confidence and care.
                 </p>
                 <p>
-                  Currently a postgraduate candidate in Occupational Health at UKZN, he is also
-                  certified in Basic Surgical Skills (UP) and holds BLS & ACLS accreditation. He is
-                  fluent in isiZulu, English, and Spanish, ensuring every patient feels heard in
-                  their own language.
+                  Additional training in Occupational Health, Basic Surgical Skills, and current
+                  BLS & ACLS accreditation round out a clinically versatile practice. Consultations
+                  are offered in isiZulu, English, and Spanish, ensuring every patient feels heard
+                  in their own language.
                 </p>
               </div>
               <div className="credentials">
