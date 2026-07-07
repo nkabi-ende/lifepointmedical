@@ -77,21 +77,32 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Life Point Medical Center — Family GP Practice | Pietermaritzburg" },
+      {
+        name: "description",
+        content:
+          "Pietermaritzburg's newest family practice. Comprehensive general practice, paediatrics, minor procedures, aesthetics and occupational health. Now accepting new patients.",
+      },
+      { name: "author", content: "Life Point Medical Center" },
+      { property: "og:title", content: "Life Point Medical Center — Family GP Practice" },
+      {
+        property: "og:description",
+        content:
+          "Comprehensive care, close to home. General practice, paediatrics, minor procedures, aesthetics and occupational health in Pietermaritzburg.",
+      },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "Life Point Medical Center" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
+      { rel: "stylesheet", href: appCss },
+      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: appCss,
+        href: "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap",
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
     ],
   }),
   shellComponent: RootShell,
