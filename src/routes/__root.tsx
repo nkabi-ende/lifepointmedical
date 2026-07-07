@@ -97,8 +97,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "description", content: "Pietermaritzburg's newest family practice. Comprehensive general practice, paediatrics, minor procedures, aesthetics and occupational health. Now accepting new patients." },
       { property: "og:description", content: "Pietermaritzburg's newest family practice. Comprehensive general practice, paediatrics, minor procedures, aesthetics and occupational health. Now accepting new patients." },
       { name: "twitter:description", content: "Pietermaritzburg's newest family practice. Comprehensive general practice, paediatrics, minor procedures, aesthetics and occupational health. Now accepting new patients." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/c0844561-1126-4268-aba2-328f6f53e3e5/id-preview-9bc56c9b--a151b9c2-cdcd-4001-b4d7-7ae07942bcb8.lovable.app-1783444769251.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/c0844561-1126-4268-aba2-328f6f53e3e5/id-preview-9bc56c9b--a151b9c2-cdcd-4001-b4d7-7ae07942bcb8.lovable.app-1783444769251.png" },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/B7Rij9LF90ckR68el6WPvCWthEj1/social-images/social-1783445376837-sticker-option1-framed-plaque.webp" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/B7Rij9LF90ckR68el6WPvCWthEj1/social-images/social-1783445376837-sticker-option1-framed-plaque.webp" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
