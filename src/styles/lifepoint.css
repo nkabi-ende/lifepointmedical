@@ -1237,9 +1237,9 @@ body { background: var(--white); }
 }
 .nav.scrolled{ background:rgba(255,255,255,0.92); border-bottom-color:var(--grey-border); box-shadow:var(--shadow-soft); }
 .nav-inner{ max-width:1280px; margin:0 auto; padding:1.1rem 2rem; display:flex; align-items:center; justify-content:space-between; }
-.nav-brand{ display:flex; align-items:center; }
-.nav-logo{ height:64px; width:64px; border-radius:50%; object-fit:contain; background:#fff; box-shadow:0 4px 14px rgba(11,31,58,.08); margin:-14px 0; transition:transform .3s var(--transition); }
-.nav-brand:hover .nav-logo{ transform:scale(1.04); }
+.nav-brand{ display:flex; align-items:center; gap: .75rem; }
+.nav-logo{ height:88px; width:88px; border-radius:50%; object-fit:contain; background:#fff; box-shadow:0 8px 26px rgba(11,31,58,.14); transition:transform .3s var(--transition), box-shadow .3s var(--transition); }
+.nav-brand:hover .nav-logo{ transform:scale(1.05); box-shadow:0 12px 34px rgba(11,31,58,.2); }
 .nav-links{ display:flex; align-items:center; gap:2.2rem; }
 .nav-link{
     font-family:'Inter',sans-serif; font-size:.86rem; color:var(--navy);
@@ -1370,7 +1370,7 @@ section{ padding:7rem 2rem; }
 .footer{ background:var(--navy); color:rgba(255,255,255,0.7); padding:5rem 2rem 2rem; }
 .footer-inner{ max-width:1200px; margin:0 auto; }
 .footer-grid{ display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:3rem; margin-bottom:3rem; }
-.footer-brand img{ height:96px; width:96px; border-radius:50%; object-fit:contain; background:#fff; margin-bottom:1.25rem; box-shadow:0 8px 24px rgba(0,0,0,.25); padding:6px; }
+.footer-brand img{ height:148px; width:148px; border-radius:50%; object-fit:contain; background:#fff; margin-bottom:1.25rem; box-shadow:0 12px 38px rgba(0,0,0,.32); padding:4px; }
 .footer-brand p{ font-size:.9rem; line-height:1.7; max-width:320px; }
 .footer-col h4{ font-family:'Inter',sans-serif; font-size:.75rem; letter-spacing:.18em; text-transform:uppercase; color:var(--white); margin-bottom:1.25rem; font-weight:600; }
 .footer-col ul{ list-style:none; }
@@ -1400,7 +1400,9 @@ section{ padding:7rem 2rem; }
     .services-grid, .info-grid{ grid-template-columns:1fr 1fr; }
     .why-grid{ grid-template-columns:1fr 1fr; }
     .footer-grid{ grid-template-columns:1fr 1fr; }
-    .nav-links{ position:fixed; top:70px; left:0; right:0; background:var(--white); flex-direction:column; padding:2rem; gap:1.5rem; border-bottom:1px solid var(--grey-border); transform:translateY(-120%); transition:transform .35s var(--transition); }
+    .nav-logo{ height:72px; width:72px; }
+    .nav-inner{ padding: .9rem 1.5rem; }
+    .nav-links{ position:fixed; top:102px; left:0; right:0; background:var(--white); flex-direction:column; padding:2rem; gap:1.5rem; border-bottom:1px solid var(--grey-border); transform:translateY(-120%); transition:transform .35s var(--transition); }
     .nav-links.active{ transform:translateY(0); }
     .menu-toggle{ display:flex; }
 }
@@ -1413,6 +1415,9 @@ section{ padding:7rem 2rem; }
     body{ padding-bottom:70px; }
     .hero-ctas, .contact-actions{ flex-direction:column; }
     .hero-ctas .btn, .contact-actions .btn{ width:100%; }
+    .nav-logo{ height:62px; width:62px; }
+    .nav-inner{ padding: .75rem 1.25rem; }
+    .nav-links{ top:88px; }
 }
 
 /* About monogram (privacy-safe portrait replacement) */
@@ -1444,11 +1449,11 @@ section{ padding:7rem 2rem; }
   animation: pre-fade-up .8s var(--transition) both;
 }
 .preloader-logo-wrap{
-  position:relative; width:150px; height:150px; display:flex; align-items:center; justify-content:center;
+  position:relative; width:200px; height:200px; display:flex; align-items:center; justify-content:center;
 }
 .preloader-logo{
-  width:130px; height:130px; border-radius:50%; object-fit:contain; background:#fff;
-  box-shadow: 0 20px 60px -20px rgba(11,31,58,.35), 0 0 0 1px rgba(11,31,58,.06);
+  width:180px; height:180px; border-radius:50%; object-fit:contain; background:#fff;
+  box-shadow: 0 28px 80px -22px rgba(11,31,58,.42), 0 0 0 1px rgba(11,31,58,.06);
   animation: pre-breathe 2.6s ease-in-out infinite;
 }
 .preloader-ring{
@@ -1474,7 +1479,7 @@ section{ padding:7rem 2rem; }
   animation: pre-shimmer 2.6s linear infinite;
 }
 @keyframes pre-spin{ to{ transform:rotate(360deg); } }
-@keyframes pre-breathe{ 0%,100%{ transform:scale(1); box-shadow:0 20px 60px -20px rgba(11,31,58,.35), 0 0 0 1px rgba(11,31,58,.06);} 50%{ transform:scale(1.04); box-shadow:0 24px 70px -18px rgba(11,31,58,.4), 0 0 0 1px rgba(129,216,208,.4);} }
+@keyframes pre-breathe{ 0%,100%{ transform:scale(1); box-shadow:0 28px 80px -22px rgba(11,31,58,.42), 0 0 0 1px rgba(11,31,58,.06);} 50%{ transform:scale(1.04); box-shadow:0 32px 90px -20px rgba(11,31,58,.48), 0 0 0 1px rgba(129,216,208,.4);} }
 @keyframes pre-ecg{ 0%{ stroke-dashoffset:360;} 60%{ stroke-dashoffset:0;} 100%{ stroke-dashoffset:-360;} }
 @keyframes pre-shimmer{ 0%{ background-position:200% 0;} 100%{ background-position:-200% 0;} }
 @keyframes pre-fade-up{ from{ opacity:0; transform:translateY(12px);} to{ opacity:1; transform:none;} }
