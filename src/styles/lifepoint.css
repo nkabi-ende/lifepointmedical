@@ -1444,11 +1444,11 @@ section{ padding:7rem 2rem; }
   animation: pre-fade-up .8s var(--transition) both;
 }
 .preloader-logo-wrap{
-  position:relative; width:150px; height:150px; display:flex; align-items:center; justify-content:center;
+  position:relative; width:180px; height:180px; display:flex; align-items:center; justify-content:center;
 }
 .preloader-logo{
-  width:130px; height:130px; border-radius:50%; object-fit:contain; background:#fff;
-  box-shadow: 0 20px 60px -20px rgba(11,31,58,.35), 0 0 0 1px rgba(11,31,58,.06);
+  width:160px; height:160px; border-radius:50%; object-fit:contain; background:#fff;
+  box-shadow: 0 24px 70px -20px rgba(11,31,58,.4), 0 0 0 1px rgba(11,31,58,.06);
   animation: pre-breathe 2.6s ease-in-out infinite;
 }
 .preloader-ring{
