@@ -1238,7 +1238,8 @@ body { background: var(--white); }
 .nav.scrolled{ background:rgba(255,255,255,0.92); border-bottom-color:var(--grey-border); box-shadow:var(--shadow-soft); }
 .nav-inner{ max-width:1280px; margin:0 auto; padding:1.1rem 2rem; display:flex; align-items:center; justify-content:space-between; }
 .nav-brand{ display:flex; align-items:center; }
-.nav-logo{ height:38px; width:auto; }
+.nav-logo{ height:64px; width:64px; border-radius:50%; object-fit:contain; background:#fff; box-shadow:0 4px 14px rgba(11,31,58,.08); margin:-14px 0; transition:transform .3s var(--transition); }
+.nav-brand:hover .nav-logo{ transform:scale(1.04); }
 .nav-links{ display:flex; align-items:center; gap:2.2rem; }
 .nav-link{
     font-family:'Inter',sans-serif; font-size:.86rem; color:var(--navy);
