@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 
-import logoAsset from "@/assets/lifepoint-logo.png.asset.json";
+import logoAsset from "@/assets/lifepoint-logo-v2.png.asset.json";
+
 
 
 export const Route = createFileRoute("/")({
@@ -47,11 +48,11 @@ const services = [
         <path d="M16 3.13a4 4 0 0 1 0 7.75" />
       </>
     ),
-    title: "Paediatric Care",
+    title: "Special Interest in Pediatrics",
     items: [
       "Infant & child wellness screening",
       "Immunisations & growth monitoring",
-      "Acute paediatric consultations",
+      "Acute pediatric consultations",
     ],
   },
   {
@@ -108,7 +109,31 @@ const credentials = [
 function LifePointHome() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [loaderGone, setLoaderGone] = useState(false);
   const rootRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const done = () => setLoading(false);
+    const t = window.setTimeout(done, 1400);
+    if (document.readyState === "complete") window.setTimeout(done, 900);
+    else window.addEventListener("load", done, { once: true });
+    return () => {
+      window.clearTimeout(t);
+      window.removeEventListener("load", done);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (loading) return;
+    const t = window.setTimeout(() => setLoaderGone(true), 800);
+    document.body.style.overflow = "";
+    return () => window.clearTimeout(t);
+  }, [loading]);
+
+  useEffect(() => {
+    if (loading) document.body.style.overflow = "hidden";
+  }, [loading]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -143,6 +168,23 @@ function LifePointHome() {
 
   return (
     <div ref={rootRef}>
+      {!loaderGone && (
+        <div className={`preloader${loading ? "" : " preloader-hide"}`} aria-hidden="true">
+          <div className="preloader-inner">
+            <div className="preloader-logo-wrap">
+              <img src={logoAsset.url} alt="" className="preloader-logo" />
+              <span className="preloader-ring"></span>
+            </div>
+            <div className="preloader-ecg" aria-hidden="true">
+              <svg viewBox="0 0 220 40" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
+                <path d="M0 20 L60 20 L72 8 L86 32 L100 4 L112 28 L124 20 L220 20" className="preloader-ecg-path" />
+              </svg>
+            </div>
+            <div className="preloader-word">Life Point Medical Center</div>
+          </div>
+        </div>
+      )}
+
       {/* Navigation */}
       <nav className={`nav${scrolled ? " scrolled" : ""}`} id="nav">
         <div className="nav-inner">
@@ -177,8 +219,8 @@ function LifePointHome() {
           <h1 className="reveal reveal-delay-1">Comprehensive care, close to home.</h1>
           <span className="hero-slogan reveal reveal-delay-2">Your health, our focus.</span>
           <p className="hero-sub reveal reveal-delay-2">
-            General practice, minor procedures, paediatrics, aesthetics and occupational health —
-            all under one roof, delivered with the attention your family deserves.
+            General practice, minor procedures, special interest in pediatrics, aesthetics and
+            occupational health — all under one roof, delivered with the attention your family deserves.
           </p>
           <div className="hero-badge reveal reveal-delay-3">
             Now open — accepting new patients
@@ -235,9 +277,9 @@ function LifePointHome() {
                 <p>
                   Life Point is led by an MBChB-qualified family physician with a broad, rigorous
                   clinical foundation built across major KwaZulu-Natal hospitals. Training spans
-                  internal medicine, surgery, paediatrics, orthopaedics, anaesthesia, family
-                  medicine, and obstetrics & gynaecology — giving the depth to treat patients of
-                  all ages with confidence and care.
+                  internal medicine, surgery, a special interest in pediatrics, orthopaedics,
+                  anaesthesia, family medicine, and obstetrics & gynaecology — giving the depth to
+                  treat patients of all ages with confidence and care.
                 </p>
                 <p>
                   Additional training in Occupational Health, Basic Surgical Skills, and current
@@ -336,9 +378,9 @@ function LifePointHome() {
             </div>
             <div className="info-card reveal reveal-delay-1">
               <h3><span className="dot"></span>Operating Hours</h3>
-              <div className="hours-row"><span className="hours-day">Monday – Friday</span><span>07:30 – 17:00</span></div>
-              <div className="hours-row"><span className="hours-day">Saturday</span><span>07:30 – 13:30</span></div>
-              <div className="hours-row"><span className="hours-day">Sunday & Public Holidays</span><span>Closed</span></div>
+              <div className="hours-row"><span className="hours-day">Monday – Friday</span><span>08:00 – 19:00</span></div>
+              <div className="hours-row"><span className="hours-day">Saturday</span><span>08:00 – 14:00</span></div>
+              <div className="hours-row"><span className="hours-day">Sunday</span><span>08:00 – 14:00</span></div>
             </div>
             <div className="info-card reveal reveal-delay-2">
               <h3><span className="dot"></span>What to Bring</h3>
@@ -445,9 +487,9 @@ function LifePointHome() {
                 <label htmlFor="time">Preferred Time</label>
                 <select id="time" name="time" defaultValue="">
                   <option value="" disabled>Select preferred time…</option>
-                  <option value="morning">Morning (07:30 – 12:00)</option>
-                  <option value="afternoon">Afternoon (12:00 – 17:00)</option>
-                  <option value="saturday">Saturday (07:30 – 13:30)</option>
+                  <option value="morning">Weekday Morning (08:00 – 12:00)</option>
+                  <option value="afternoon">Weekday Afternoon (12:00 – 19:00)</option>
+                  <option value="weekend">Weekend (08:00 – 14:00)</option>
                 </select>
               </div>
               <div className="form-group">
@@ -540,9 +582,9 @@ function LifePointHome() {
             <div className="footer-col">
               <h4>Hours</h4>
               <ul>
-                <li><a href="#patient-info" onClick={handleNav("patient-info")}>Mon–Fri: 07:30–17:00</a></li>
-                <li><a href="#patient-info" onClick={handleNav("patient-info")}>Sat: 07:30–13:30</a></li>
-                <li><a href="#patient-info" onClick={handleNav("patient-info")}>Sun: Closed</a></li>
+                <li><a href="#patient-info" onClick={handleNav("patient-info")}>Mon–Fri: 08:00–19:00</a></li>
+                <li><a href="#patient-info" onClick={handleNav("patient-info")}>Sat: 08:00–14:00</a></li>
+                <li><a href="#patient-info" onClick={handleNav("patient-info")}>Sun: 08:00–14:00</a></li>
               </ul>
             </div>
           </div>

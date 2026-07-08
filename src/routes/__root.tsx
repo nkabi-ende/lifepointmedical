@@ -84,6 +84,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Pietermaritzburg's newest family practice. Comprehensive general practice, paediatrics, minor procedures, aesthetics and occupational health. Now accepting new patients.",
       },
       { name: "author", content: "Life Point Medical Center" },
+      { name: "facebook-domain-verification", content: "7y1avnafcxstgs9727mwu3aeunlw90" },
       { property: "og:title", content: "Life Point Medical Center — Family GP Practice | Pietermaritzburg" },
       {
         property: "og:description",
