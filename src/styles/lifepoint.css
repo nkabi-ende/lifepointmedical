@@ -1479,7 +1479,7 @@ section{ padding:7rem 2rem; }
   animation: pre-shimmer 2.6s linear infinite;
 }
 @keyframes pre-spin{ to{ transform:rotate(360deg); } }
-@keyframes pre-breathe{ 0%,100%{ transform:scale(1); box-shadow:0 20px 60px -20px rgba(11,31,58,.35), 0 0 0 1px rgba(11,31,58,.06);} 50%{ transform:scale(1.04); box-shadow:0 24px 70px -18px rgba(11,31,58,.4), 0 0 0 1px rgba(129,216,208,.4);} }
+@keyframes pre-breathe{ 0%,100%{ transform:scale(1); box-shadow:0 28px 80px -22px rgba(11,31,58,.42), 0 0 0 1px rgba(11,31,58,.06);} 50%{ transform:scale(1.04); box-shadow:0 32px 90px -20px rgba(11,31,58,.48), 0 0 0 1px rgba(129,216,208,.4);} }
 @keyframes pre-ecg{ 0%{ stroke-dashoffset:360;} 60%{ stroke-dashoffset:0;} 100%{ stroke-dashoffset:-360;} }
 @keyframes pre-shimmer{ 0%{ background-position:200% 0;} 100%{ background-position:-200% 0;} }
 @keyframes pre-fade-up{ from{ opacity:0; transform:translateY(12px);} to{ opacity:1; transform:none;} }
