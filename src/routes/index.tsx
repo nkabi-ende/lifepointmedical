@@ -109,7 +109,31 @@ const credentials = [
 function LifePointHome() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [loaderGone, setLoaderGone] = useState(false);
   const rootRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const done = () => setLoading(false);
+    const t = window.setTimeout(done, 1400);
+    if (document.readyState === "complete") window.setTimeout(done, 900);
+    else window.addEventListener("load", done, { once: true });
+    return () => {
+      window.clearTimeout(t);
+      window.removeEventListener("load", done);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (loading) return;
+    const t = window.setTimeout(() => setLoaderGone(true), 800);
+    document.body.style.overflow = "";
+    return () => window.clearTimeout(t);
+  }, [loading]);
+
+  useEffect(() => {
+    if (loading) document.body.style.overflow = "hidden";
+  }, [loading]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -144,6 +168,23 @@ function LifePointHome() {
 
   return (
     <div ref={rootRef}>
+      {!loaderGone && (
+        <div className={`preloader${loading ? "" : " preloader-hide"}`} aria-hidden="true">
+          <div className="preloader-inner">
+            <div className="preloader-logo-wrap">
+              <img src={logoAsset.url} alt="" className="preloader-logo" />
+              <span className="preloader-ring"></span>
+            </div>
+            <div className="preloader-ecg" aria-hidden="true">
+              <svg viewBox="0 0 220 40" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
+                <path d="M0 20 L60 20 L72 8 L86 32 L100 4 L112 28 L124 20 L220 20" className="preloader-ecg-path" />
+              </svg>
+            </div>
+            <div className="preloader-word">Life Point Medical Center</div>
+          </div>
+        </div>
+      )}
+
       {/* Navigation */}
       <nav className={`nav${scrolled ? " scrolled" : ""}`} id="nav">
         <div className="nav-inner">
