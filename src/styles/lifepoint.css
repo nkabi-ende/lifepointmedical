@@ -1370,7 +1370,7 @@ section{ padding:7rem 2rem; }
 .footer{ background:var(--navy); color:rgba(255,255,255,0.7); padding:5rem 2rem 2rem; }
 .footer-inner{ max-width:1200px; margin:0 auto; }
 .footer-grid{ display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:3rem; margin-bottom:3rem; }
-.footer-brand img{ height:96px; width:96px; border-radius:50%; object-fit:contain; background:#fff; margin-bottom:1.25rem; box-shadow:0 8px 24px rgba(0,0,0,.25); padding:6px; }
+.footer-brand img{ height:132px; width:132px; border-radius:50%; object-fit:contain; background:#fff; margin-bottom:1.25rem; box-shadow:0 10px 32px rgba(0,0,0,.3); padding:4px; }
 .footer-brand p{ font-size:.9rem; line-height:1.7; max-width:320px; }
 .footer-col h4{ font-family:'Inter',sans-serif; font-size:.75rem; letter-spacing:.18em; text-transform:uppercase; color:var(--white); margin-bottom:1.25rem; font-weight:600; }
 .footer-col ul{ list-style:none; }
