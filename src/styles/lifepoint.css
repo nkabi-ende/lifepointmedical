@@ -1400,7 +1400,9 @@ section{ padding:7rem 2rem; }
     .services-grid, .info-grid{ grid-template-columns:1fr 1fr; }
     .why-grid{ grid-template-columns:1fr 1fr; }
     .footer-grid{ grid-template-columns:1fr 1fr; }
-    .nav-links{ position:fixed; top:100%; left:0; right:0; background:var(--white); flex-direction:column; padding:2rem; gap:1.5rem; border-bottom:1px solid var(--grey-border); transform:translateY(-120%); transition:transform .35s var(--transition); }
+    .nav-logo{ height:62px; width:62px; }
+    .nav-inner{ padding: .9rem 1.5rem; }
+    .nav-links{ position:fixed; top:90px; left:0; right:0; background:var(--white); flex-direction:column; padding:2rem; gap:1.5rem; border-bottom:1px solid var(--grey-border); transform:translateY(-120%); transition:transform .35s var(--transition); }
     .nav-links.active{ transform:translateY(0); }
     .menu-toggle{ display:flex; }
 }
@@ -1413,6 +1415,9 @@ section{ padding:7rem 2rem; }
     body{ padding-bottom:70px; }
     .hero-ctas, .contact-actions{ flex-direction:column; }
     .hero-ctas .btn, .contact-actions .btn{ width:100%; }
+    .nav-logo{ height:54px; width:54px; }
+    .nav-inner{ padding: .75rem 1.25rem; }
+    .nav-links{ top:78px; }
 }
 
 /* About monogram (privacy-safe portrait replacement) */
