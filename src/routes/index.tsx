@@ -635,7 +635,12 @@ function LifePointHome() {
                   </svg>
                   WhatsApp
                 </h3>
-                <p>Message us for quick enquiries and appointment requests.</p>
+                <p>Fastest way to reach the practice. Message us for quick enquiries and appointment requests.</p>
+                <p style={{ marginTop: "0.5rem" }}>
+                  <a href={WA_LINK("Hello Life Point Medical Center, I'd like to enquire.")} target="_blank" rel="noopener noreferrer">
+                    Open WhatsApp chat
+                  </a>
+                </p>
               </div>
               <div className="contact-actions">
                 <a
