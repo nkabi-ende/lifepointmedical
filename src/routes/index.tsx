@@ -304,41 +304,103 @@ function LifePointHome() {
 
       {/* Hero */}
       <section className="hero" id="hero">
-        <div className="hero-inner">
-          <span className="hero-eyebrow reveal">Pietermaritzburg's newest family practice</span>
-          <h1 className="reveal reveal-delay-1">Comprehensive care, close to home.</h1>
-          <span className="hero-slogan reveal reveal-delay-2">Your health, our focus.</span>
-          <p className="hero-sub reveal reveal-delay-2">
-            General practice, minor procedures, special interest in pediatrics, aesthetics and
-            occupational health — all under one roof, delivered with the attention your family deserves.
-          </p>
-          <div className="hero-badge reveal reveal-delay-3">
-            Now open — accepting new patients
-          </div>
-          <div className="hero-ctas reveal reveal-delay-3">
-            <a href="#contact" className="btn btn-solid" onClick={handleNav("contact")}>
-              Book an Appointment
-            </a>
-            <a href="#location" className="btn btn-outline" onClick={handleNav("location")}>
-              Visit the Practice
-            </a>
-          </div>
-          <div className="hero-meta reveal reveal-delay-4">
-            <div className="hero-meta-item">
-              <svg className="hero-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                <circle cx="12" cy="10" r="3" />
-              </svg>
-              <span>Unit 02, Mayors Walk Centre, 68 Mayors Walk Road, Pietermaritzburg</span>
+        <div className="hero-inner hero-grid">
+          <div className="hero-copy">
+            <span className="hero-eyebrow reveal">Pietermaritzburg's newest family practice</span>
+            <h1 className="reveal reveal-delay-1">Comprehensive care, close to home.</h1>
+            <span className="hero-slogan reveal reveal-delay-2">Your health, our focus.</span>
+            <p className="hero-sub reveal reveal-delay-2">
+              General practice, minor procedures, a special interest in pediatrics, aesthetics and
+              occupational health — all under one roof, delivered with the attention your family deserves.
+            </p>
+            <div className="hero-badge reveal reveal-delay-3">
+              Now open — accepting new patients
             </div>
-            <div className="hero-meta-item">
-              <svg className="hero-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
-                <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
-                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-              </svg>
-              <span>Medical Aid & Cash Accepted</span>
+            <div className="hero-ctas reveal reveal-delay-3">
+              <a
+                href={WA_LINK("Hello Life Point Medical Center, I'd like to book an appointment.")}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-whatsapp"
+              >
+                <svg width={16} height={16} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347" />
+                </svg>
+                Book via WhatsApp
+              </a>
+              <a href="#contact" className="btn btn-outline" onClick={handleNav("contact")}>
+                Request Appointment
+              </a>
+            </div>
+            <div className="hero-meta reveal reveal-delay-4">
+              <div className="hero-meta-item">
+                <svg className="hero-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+                <span>Unit 02, Mayors Walk Centre, Pietermaritzburg</span>
+              </div>
+              <div className="hero-meta-item">
+                <svg className="hero-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                </svg>
+                <span>Medical Aid & Cash Accepted</span>
+              </div>
             </div>
           </div>
+
+          {/* At-a-glance card */}
+          <aside className="hero-card reveal reveal-delay-2" aria-label="Practice at a glance">
+            <div className="hero-card-header">
+              <span className="hero-card-eyebrow">At a glance</span>
+              <span className="hero-card-status"><span className="hero-card-dot" /> Open today</span>
+            </div>
+            <div className="hero-card-hours">
+              <div className="hours-row"><span className="hours-day">Mon – Fri</span><span>08:00 – 19:00</span></div>
+              <div className="hours-row"><span className="hours-day">Saturday</span><span>08:00 – 14:00</span></div>
+              <div className="hours-row"><span className="hours-day">Sunday</span><span>08:00 – 14:00</span></div>
+            </div>
+            <div className="hero-card-divider" />
+            <span className="hero-card-eyebrow">Popular care</span>
+            <div className="hero-chip-row">
+              <span className="hero-chip">General Practice</span>
+              <span className="hero-chip">ECG & Chest Pain</span>
+              <span className="hero-chip">IV Drips</span>
+              <span className="hero-chip">Bloods & DNA</span>
+              <span className="hero-chip">Weight Loss</span>
+              <span className="hero-chip">Family Planning</span>
+            </div>
+            <a
+              href={WA_LINK("Hello Life Point Medical Center, I'd like to enquire about an appointment.")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hero-card-cta"
+            >
+              <span>Chat with the practice</span>
+              <svg width={16} height={16} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </a>
+          </aside>
+        </div>
+      </section>
+
+      {/* Trust strip */}
+      <section className="trust-strip" aria-label="Practice highlights">
+        <div className="trust-inner">
+          {[
+            { n: "13+", l: "Services under one roof" },
+            { n: "3", l: "Rooms — 2 consult, 1 procedure" },
+            { n: "7 days", l: "Weekly availability" },
+            { n: "3 languages", l: "isiZulu · English · Spanish" },
+          ].map((t) => (
+            <div key={t.l} className="trust-item">
+              <div className="trust-n">{t.n}</div>
+              <div className="trust-l">{t.l}</div>
+            </div>
+          ))}
         </div>
       </section>
 
