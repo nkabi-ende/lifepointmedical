@@ -12,6 +12,10 @@ export const Route = createFileRoute("/")({
   }),
 });
 
+const WA_NUMBER = "27603196884";
+const WA_LINK = (msg?: string) =>
+  `https://wa.me/${WA_NUMBER}${msg ? `?text=${encodeURIComponent(msg)}` : ""}`;
+
 const services = [
   {
     icon: (
@@ -19,9 +23,36 @@ const services = [
     ),
     title: "General Practice",
     items: [
-      "Consultations & acute illness care",
-      "Chronic disease management",
+      "Acute illness & everyday consultations",
       "Preventative screening & vaccinations",
+      "Family medicine for all ages",
+    ],
+  },
+  {
+    icon: (
+      <>
+        <path d="M9 11H5a2 2 0 0 0-2 2v7h18v-7a2 2 0 0 0-2-2h-4" />
+        <rect x="9" y="3" width="6" height="8" rx="1" />
+      </>
+    ),
+    title: "Chronic Illness Management",
+    items: [
+      "Hypertension, diabetes & cholesterol",
+      "HIV testing, initiation & ongoing care",
+      "Long-term case management",
+    ],
+  },
+  {
+    icon: (
+      <>
+        <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+      </>
+    ),
+    title: "ECG & Chest Pain Management",
+    items: [
+      "In-house 12-lead ECG",
+      "Chest pain triage & assessment",
+      "Cardiac risk screening",
     ],
   },
   {
@@ -35,8 +66,38 @@ const services = [
     title: "Minor Surgical Procedures",
     items: [
       "Circumcisions",
-      "Wound suturing & minor trauma care",
+      "Wound suturing & minor trauma",
       "Skin lesion excisions",
+    ],
+  },
+  {
+    icon: (
+      <>
+        <circle cx="12" cy="12" r="10" />
+        <path d="M8 14s1.5 2 4 2 4-2 4-2" />
+        <line x1="9" y1="9" x2="9.01" y2="9" />
+        <line x1="15" y1="9" x2="15.01" y2="9" />
+      </>
+    ),
+    title: "Family Planning",
+    items: [
+      "Contraception counselling & prescriptions",
+      "Reproductive & sexual health",
+      "Pre-conception consultations",
+    ],
+  },
+  {
+    icon: (
+      <>
+        <circle cx="12" cy="8" r="5" />
+        <path d="M20 21a8 8 0 0 0-16 0" />
+      </>
+    ),
+    title: "Male Health",
+    items: [
+      "Executive men's health checks",
+      "Prostate & testicular screening",
+      "Sexual & hormonal health",
     ],
   },
   {
@@ -56,12 +117,42 @@ const services = [
     ],
   },
   {
-    icon: <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />,
-    title: "Aesthetics & Wellness",
+    icon: (
+      <>
+        <path d="M9 2v6l-3 4v10h12V12l-3-4V2" />
+        <path d="M9 2h6" />
+      </>
+    ),
+    title: "IV Drips & Aesthetics",
     items: [
-      "IV Glow Drips & vitamin infusions",
-      "Medically supervised weight loss programmes",
+      "IV Glow, hydration & vitamin infusions",
+      "Wellness & recovery drips",
       "Skin health consultations",
+    ],
+  },
+  {
+    icon: <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />,
+    title: "Medical Weight Loss",
+    items: [
+      "Physician-supervised programmes",
+      "Metabolic & bloodwork assessment",
+      "Nutrition & lifestyle coaching",
+    ],
+  },
+  {
+    icon: (
+      <>
+        <path d="M10 2v7.31" />
+        <path d="M14 9.3V1.99" />
+        <path d="M8.5 2h7" />
+        <path d="M14 9.3a6.5 6.5 0 1 1-4 0" />
+      </>
+    ),
+    title: "Bloods, DNA & Drug Screening",
+    items: [
+      "Comprehensive pathology bloods",
+      "DNA & genetic screening",
+      "Employer & personal drug screening",
     ],
   },
   {
@@ -75,24 +166,23 @@ const services = [
     ),
     title: "Occupational Health",
     items: [
-      "Pre-employment / periodic / exit medicals",
+      "Pre-employment, periodic & exit medicals",
       "Fitness-to-work assessments",
-      "Spirometry & audiometry testing",
+      "Spirometry, audiometry & vision",
       "Corporate wellness programmes",
     ],
   },
   {
     icon: (
       <>
-        <path d="M9 11H5a2 2 0 0 0-2 2v7h18v-7a2 2 0 0 0-2-2h-4" />
-        <rect x="9" y="3" width="6" height="8" rx="1" />
+        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
       </>
     ),
     title: "Chronic & Lifestyle Care",
     items: [
-      "Hypertension, diabetes & cholesterol",
       "Mental health & lifestyle coaching",
-      "Ongoing case management",
+      "Preventative wellness planning",
+      "Long-term patient partnership",
     ],
   },
 ];
