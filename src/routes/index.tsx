@@ -546,7 +546,19 @@ function LifePointHome() {
               className="contact-form reveal"
               onSubmit={(e) => {
                 e.preventDefault();
-                alert("Thank you. We'll be in touch within one business day.");
+                const f = e.currentTarget as HTMLFormElement;
+                const data = new FormData(f);
+                const lines = [
+                  "Hello Life Point Medical Center, I'd like to request an appointment.",
+                  "",
+                  `Name: ${data.get("name") || "—"}`,
+                  `Phone: ${data.get("phone") || "—"}`,
+                  `Payment: ${data.get("payment") || "—"}`,
+                  `Preferred date: ${data.get("date") || "—"}`,
+                  `Preferred time: ${data.get("time") || "—"}`,
+                  `Message: ${data.get("message") || "—"}`,
+                ];
+                window.open(WA_LINK(lines.join("\n")), "_blank", "noopener");
               }}
             >
               <div className="form-row">
