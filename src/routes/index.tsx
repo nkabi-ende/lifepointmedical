@@ -12,6 +12,10 @@ export const Route = createFileRoute("/")({
   }),
 });
 
+const WA_NUMBER = "27603196884";
+const WA_LINK = (msg?: string) =>
+  `https://wa.me/${WA_NUMBER}${msg ? `?text=${encodeURIComponent(msg)}` : ""}`;
+
 const services = [
   {
     icon: (
@@ -19,9 +23,36 @@ const services = [
     ),
     title: "General Practice",
     items: [
-      "Consultations & acute illness care",
-      "Chronic disease management",
+      "Acute illness & everyday consultations",
       "Preventative screening & vaccinations",
+      "Family medicine for all ages",
+    ],
+  },
+  {
+    icon: (
+      <>
+        <path d="M9 11H5a2 2 0 0 0-2 2v7h18v-7a2 2 0 0 0-2-2h-4" />
+        <rect x="9" y="3" width="6" height="8" rx="1" />
+      </>
+    ),
+    title: "Chronic Illness Management",
+    items: [
+      "Hypertension, diabetes & cholesterol",
+      "HIV testing, initiation & ongoing care",
+      "Long-term case management",
+    ],
+  },
+  {
+    icon: (
+      <>
+        <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+      </>
+    ),
+    title: "ECG & Chest Pain Management",
+    items: [
+      "In-house 12-lead ECG",
+      "Chest pain triage & assessment",
+      "Cardiac risk screening",
     ],
   },
   {
@@ -35,8 +66,38 @@ const services = [
     title: "Minor Surgical Procedures",
     items: [
       "Circumcisions",
-      "Wound suturing & minor trauma care",
+      "Wound suturing & minor trauma",
       "Skin lesion excisions",
+    ],
+  },
+  {
+    icon: (
+      <>
+        <circle cx="12" cy="12" r="10" />
+        <path d="M8 14s1.5 2 4 2 4-2 4-2" />
+        <line x1="9" y1="9" x2="9.01" y2="9" />
+        <line x1="15" y1="9" x2="15.01" y2="9" />
+      </>
+    ),
+    title: "Family Planning",
+    items: [
+      "Contraception counselling & prescriptions",
+      "Reproductive & sexual health",
+      "Pre-conception consultations",
+    ],
+  },
+  {
+    icon: (
+      <>
+        <circle cx="12" cy="8" r="5" />
+        <path d="M20 21a8 8 0 0 0-16 0" />
+      </>
+    ),
+    title: "Male Health",
+    items: [
+      "Executive men's health checks",
+      "Prostate & testicular screening",
+      "Sexual & hormonal health",
     ],
   },
   {
@@ -56,12 +117,42 @@ const services = [
     ],
   },
   {
-    icon: <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />,
-    title: "Aesthetics & Wellness",
+    icon: (
+      <>
+        <path d="M9 2v6l-3 4v10h12V12l-3-4V2" />
+        <path d="M9 2h6" />
+      </>
+    ),
+    title: "IV Drips & Aesthetics",
     items: [
-      "IV Glow Drips & vitamin infusions",
-      "Medically supervised weight loss programmes",
+      "IV Glow, hydration & vitamin infusions",
+      "Wellness & recovery drips",
       "Skin health consultations",
+    ],
+  },
+  {
+    icon: <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />,
+    title: "Medical Weight Loss",
+    items: [
+      "Physician-supervised programmes",
+      "Metabolic & bloodwork assessment",
+      "Nutrition & lifestyle coaching",
+    ],
+  },
+  {
+    icon: (
+      <>
+        <path d="M10 2v7.31" />
+        <path d="M14 9.3V1.99" />
+        <path d="M8.5 2h7" />
+        <path d="M14 9.3a6.5 6.5 0 1 1-4 0" />
+      </>
+    ),
+    title: "Bloods, DNA & Drug Screening",
+    items: [
+      "Comprehensive pathology bloods",
+      "DNA & genetic screening",
+      "Employer & personal drug screening",
     ],
   },
   {
@@ -75,24 +166,23 @@ const services = [
     ),
     title: "Occupational Health",
     items: [
-      "Pre-employment / periodic / exit medicals",
+      "Pre-employment, periodic & exit medicals",
       "Fitness-to-work assessments",
-      "Spirometry & audiometry testing",
+      "Spirometry, audiometry & vision",
       "Corporate wellness programmes",
     ],
   },
   {
     icon: (
       <>
-        <path d="M9 11H5a2 2 0 0 0-2 2v7h18v-7a2 2 0 0 0-2-2h-4" />
-        <rect x="9" y="3" width="6" height="8" rx="1" />
+        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
       </>
     ),
     title: "Chronic & Lifestyle Care",
     items: [
-      "Hypertension, diabetes & cholesterol",
       "Mental health & lifestyle coaching",
-      "Ongoing case management",
+      "Preventative wellness planning",
+      "Long-term patient partnership",
     ],
   },
 ];
@@ -456,7 +546,19 @@ function LifePointHome() {
               className="contact-form reveal"
               onSubmit={(e) => {
                 e.preventDefault();
-                alert("Thank you. We'll be in touch within one business day.");
+                const f = e.currentTarget as HTMLFormElement;
+                const data = new FormData(f);
+                const lines = [
+                  "Hello Life Point Medical Center, I'd like to request an appointment.",
+                  "",
+                  `Name: ${data.get("name") || "—"}`,
+                  `Phone: ${data.get("phone") || "—"}`,
+                  `Payment: ${data.get("payment") || "—"}`,
+                  `Preferred date: ${data.get("date") || "—"}`,
+                  `Preferred time: ${data.get("time") || "—"}`,
+                  `Message: ${data.get("message") || "—"}`,
+                ];
+                window.open(WA_LINK(lines.join("\n")), "_blank", "noopener");
               }}
             >
               <div className="form-row">
@@ -533,20 +635,37 @@ function LifePointHome() {
                   </svg>
                   WhatsApp
                 </h3>
-                <p>Message us for quick enquiries and appointment requests.</p>
+                <p>Fastest way to reach the practice. Message us for quick enquiries and appointment requests.</p>
+                <p style={{ marginTop: "0.5rem" }}>
+                  <a href={WA_LINK("Hello Life Point Medical Center, I'd like to enquire.")} target="_blank" rel="noopener noreferrer">
+                    Open WhatsApp chat
+                  </a>
+                </p>
               </div>
               <div className="contact-actions">
-                <a href="#" className="btn btn-solid" onClick={(e) => e.preventDefault()} style={{ gap: "0.5rem" }}>
+                <a
+                  href={WA_LINK("Hello Life Point Medical Center, I'd like to book an appointment.")}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-solid"
+                  style={{ gap: "0.5rem" }}
+                >
                   <svg width={16} height={16} viewBox="0 0 24 24" fill="currentColor">
                     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
                   </svg>
-                  WhatsApp
+                  Message on WhatsApp
                 </a>
-                <a href="#" className="btn btn-outline" onClick={(e) => e.preventDefault()} style={{ gap: "0.5rem" }}>
+                <a
+                  href={WA_LINK("Hello Life Point Medical Center, I'd like to speak with the practice.")}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-outline"
+                  style={{ gap: "0.5rem" }}
+                >
                   <svg width={16} height={16} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
                     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
                   </svg>
-                  Call Now
+                  Chat with the Practice
                 </a>
               </div>
             </div>
@@ -597,7 +716,14 @@ function LifePointHome() {
 
       {/* Mobile sticky CTA */}
       <div className="mobile-cta">
-        <a href="tel:+2733" className="btn btn-outline btn-sm">Call</a>
+        <a
+          href={WA_LINK("Hello Life Point Medical Center, I'd like to book an appointment.")}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn btn-outline btn-sm"
+        >
+          WhatsApp
+        </a>
         <a href="#contact" className="btn btn-solid btn-sm" onClick={handleNav("contact")}>Book</a>
       </div>
     </div>
