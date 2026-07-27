@@ -711,7 +711,14 @@ function LifePointHome() {
 
       {/* Mobile sticky CTA */}
       <div className="mobile-cta">
-        <a href="tel:+2733" className="btn btn-outline btn-sm">Call</a>
+        <a
+          href={WA_LINK("Hello Life Point Medical Center, I'd like to book an appointment.")}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn btn-outline btn-sm"
+        >
+          WhatsApp
+        </a>
         <a href="#contact" className="btn btn-solid btn-sm" onClick={handleNav("contact")}>Book</a>
       </div>
     </div>
