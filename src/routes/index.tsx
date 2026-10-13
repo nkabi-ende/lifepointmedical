@@ -1,14 +1,35 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 
-import logoAsset from "@/assets/lifepoint-logo-v3.png.asset.json";
-
-
+import logoAsset from "@/assets/lifepoint-uploaded-logo.webp.asset.json";
+import { Button } from "@/components/ui/button";
+import { SITE_URL, SHARE_IMAGE, PRACTICE_TITLE, PRACTICE_DESCRIPTION, practiceSchema } from "@/lib/practice-seo";
 
 export const Route = createFileRoute("/")({
   component: LifePointHome,
   head: () => ({
-    links: [{ rel: "canonical", href: "/" }],
+    meta: [
+      { title: PRACTICE_TITLE },
+      { name: "description", content: PRACTICE_DESCRIPTION },
+      { name: "robots", content: "index, follow, max-image-preview:large" },
+      { property: "og:title", content: PRACTICE_TITLE },
+      { property: "og:description", content: PRACTICE_DESCRIPTION },
+      { property: "og:type", content: "website" },
+      { property: "og:locale", content: "en_ZA" },
+      { property: "og:url", content: `${SITE_URL}/` },
+      { property: "og:image", content: SHARE_IMAGE },
+      { property: "og:image:type", content: "image/jpeg" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:image:alt", content: "Life Point Medical Center official logo" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: PRACTICE_TITLE },
+      { name: "twitter:description", content: PRACTICE_DESCRIPTION },
+      { name: "twitter:image", content: SHARE_IMAGE },
+      { name: "twitter:image:alt", content: "Life Point Medical Center official logo" },
+    ],
+    links: [{ rel: "canonical", href: `${SITE_URL}/` }, { rel: "preload", as: "image", href: logoAsset.url }],
+    scripts: [{ type: "application/ld+json", children: JSON.stringify(practiceSchema) }],
   }),
 });
 
@@ -205,12 +226,9 @@ function LifePointHome() {
 
   useEffect(() => {
     const done = () => setLoading(false);
-    const t = window.setTimeout(done, 1400);
-    if (document.readyState === "complete") window.setTimeout(done, 900);
-    else window.addEventListener("load", done, { once: true });
+    const t = window.setTimeout(done, window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 650);
     return () => {
       window.clearTimeout(t);
-      window.removeEventListener("load", done);
     };
   }, []);
 
@@ -222,7 +240,9 @@ function LifePointHome() {
   }, [loading]);
 
   useEffect(() => {
-    if (loading) document.body.style.overflow = "hidden";
+    if (!loading) return;
+    document.body.style.overflow = "hidden";
+    return () => { document.body.style.overflow = ""; };
   }, [loading]);
 
   useEffect(() => {
@@ -258,6 +278,7 @@ function LifePointHome() {
 
   return (
     <div ref={rootRef}>
+      <a href="#main-content" className="skip-link">Skip to content</a>
       {!loaderGone && (
         <div className={`preloader${loading ? "" : " preloader-hide"}`} aria-hidden="true">
           <div className="preloader-inner">
@@ -279,18 +300,20 @@ function LifePointHome() {
       <nav className={`nav${scrolled ? " scrolled" : ""}`} id="nav">
         <div className="nav-inner">
           <a href="#hero" className="nav-brand" onClick={handleNav("hero")}>
-            <img src={logoAsset.url} alt="Life Point Medical Center" className="nav-logo" />
+            <img src={logoAsset.url} alt="Life Point Medical Center" className="nav-logo" width={1000} height={313} fetchPriority="high" />
           </a>
-          <button
+          <Button variant="ghost" size="icon"
             className={`menu-toggle${menuOpen ? " active" : ""}`}
             aria-label="Toggle menu"
+            aria-expanded={menuOpen}
+            aria-controls="primary-navigation"
             onClick={() => setMenuOpen((v) => !v)}
           >
             <span></span>
             <span></span>
             <span></span>
-          </button>
-          <div className={`nav-links${menuOpen ? " active" : ""}`}>
+          </Button>
+          <div id="primary-navigation" className={`nav-links${menuOpen ? " active" : ""}`}>
             <a href="#services" className="nav-link" onClick={handleNav("services")}>Services</a>
             <a href="#about" className="nav-link" onClick={handleNav("about")}>About the Practice</a>
             <a href="#location" className="nav-link" onClick={handleNav("location")}>Location</a>
@@ -303,14 +326,15 @@ function LifePointHome() {
       </nav>
 
       {/* Hero */}
+      <main id="main-content" tabIndex={-1}>
       <section className="hero" id="hero">
         <div className="hero-inner hero-grid">
           <div className="hero-copy">
             <span className="hero-eyebrow reveal">Pietermaritzburg's newest family practice</span>
-            <h1 className="reveal reveal-delay-1">Comprehensive care, close to home.</h1>
+            <h1 className="reveal reveal-delay-1">Life Point Medical Center</h1>
             <span className="hero-slogan reveal reveal-delay-2">Your health, our focus.</span>
             <p className="hero-sub reveal reveal-delay-2">
-              General practice, minor procedures, a special interest in pediatrics, aesthetics and
+              Your family GP in Pietermaritzburg. General practice, minor procedures, a special interest in pediatrics, aesthetics and
               occupational health — all under one roof, delivered with the attention your family deserves.
             </p>
             <div className="hero-badge reveal reveal-delay-3">
@@ -354,7 +378,7 @@ function LifePointHome() {
           <aside className="hero-card reveal reveal-delay-2" aria-label="Practice at a glance">
             <div className="hero-card-header">
               <span className="hero-card-eyebrow">At a glance</span>
-              <span className="hero-card-status"><span className="hero-card-dot" /> Open today</span>
+              <span className="hero-card-status"><span className="hero-card-dot" /> Open 7 days</span>
             </div>
             <div className="hero-card-hours">
               <div className="hours-row"><span className="hours-day">Mon – Fri</span><span>08:00 – 19:00</span></div>
@@ -639,11 +663,11 @@ function LifePointHome() {
               <div className="form-row">
                 <div className="form-group">
                   <label htmlFor="name">Full Name</label>
-                  <input type="text" id="name" name="name" placeholder="Your name" required />
+                  <input type="text" id="name" name="name" autoComplete="name" placeholder="Your name" required />
                 </div>
                 <div className="form-group">
                   <label htmlFor="phone">Phone Number</label>
-                  <input type="tel" id="phone" name="phone" placeholder="Your phone number" required />
+                  <input type="tel" id="phone" name="phone" autoComplete="tel" placeholder="Your phone number" required />
                 </div>
               </div>
               <div className="form-row">
@@ -671,11 +695,12 @@ function LifePointHome() {
               </div>
               <div className="form-group">
                 <label htmlFor="message">Message (optional)</label>
-                <textarea id="message" name="message" placeholder="Reason for visit, symptoms, or any special requirements…" />
+                <textarea id="message" name="message" placeholder="Appointment preferences or general questions. Please avoid sensitive medical details." />
               </div>
-              <button type="submit" className="btn btn-solid" style={{ alignSelf: "flex-start" }}>
-                Request Appointment
-              </button>
+              <p className="booking-note">Your request opens in WhatsApp. Send the message there; the practice will confirm availability. Please avoid sharing ID numbers or medical records.</p>
+              <Button type="submit" className="btn btn-solid appointment-submit">
+                Request via WhatsApp
+              </Button>
             </form>
             <div className="contact-info reveal reveal-delay-1">
               <div className="contact-method">
@@ -685,9 +710,9 @@ function LifePointHome() {
                   </svg>
                   Phone
                 </h3>
-                <p>Call the practice directly during operating hours.</p>
+                <p>Arrange a call with the practice during operating hours.</p>
                 <p style={{ marginTop: "0.5rem" }}>
-                  <a href="tel:+2733">Phone number available on booking</a>
+                  <a href={WA_LINK("Hello Life Point Medical Center, please arrange a call with the practice.")} target="_blank" rel="noopener noreferrer">Request a call via WhatsApp</a>
                 </p>
               </div>
               <div className="contact-method">
@@ -747,6 +772,7 @@ function LifePointHome() {
           </div>
         </div>
       </section>
+      </main>
 
       {/* Footer */}
       <footer className="footer" id="footer">
