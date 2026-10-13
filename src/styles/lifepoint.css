@@ -1148,12 +1148,12 @@
    micro-motion, and refined details on top of the base system.
    ============================================================ */
 :root {
-    --shadow-soft: 0 1px 2px rgba(15,37,64,0.04), 0 8px 24px -8px rgba(15,37,64,0.08);
-    --shadow-lift: 0 2px 4px rgba(15,37,64,0.05), 0 24px 48px -16px rgba(15,37,64,0.16);
+    --shadow-soft: 0 1px 2px rgba(26,61,34,0.04), 0 8px 24px -8px rgba(26,61,34,0.08);
+    --shadow-lift: 0 2px 4px rgba(26,61,34,0.05), 0 24px 48px -16px rgba(26,61,34,0.16);
+    --accent-readable: #36756E;
+    --focus-ring: #36756E;
     --gradient-navy: linear-gradient(180deg, #2F5D3A 0%, #1A3D22 100%);
-    --gradient-hero: radial-gradient(1200px 700px at 85% -10%, rgba(129,216,208,0.18), transparent 60%),
-                     radial-gradient(900px 600px at -10% 110%, rgba(15,37,64,0.06), transparent 60%),
-                     linear-gradient(180deg, #ffffff 0%, #fafbfc 100%);
+    --gradient-hero: var(--white);
 }
 body { background: var(--white); }
 
@@ -1164,7 +1164,7 @@ body { background: var(--white); }
     overflow: hidden;
 }
 .hero::before{
-    content:""; position:absolute; inset:0;
+    content:none; position:absolute; inset:0;
     background-image:
       linear-gradient(rgba(15,37,64,0.035) 1px, transparent 1px),
       linear-gradient(90deg, rgba(15,37,64,0.035) 1px, transparent 1px);
@@ -1189,13 +1189,12 @@ body { background: var(--white); }
 @keyframes pulse{0%,100%{box-shadow:0 0 0 4px rgba(129,216,208,0.25);}50%{box-shadow:0 0 0 8px rgba(129,216,208,0.05);}}
 
 .hero-inner h1{
-    font-size: clamp(2.6rem, 5.6vw, 4.5rem);
-    letter-spacing: -0.025em;
-    background: linear-gradient(180deg, #2F5D3A 0%, #3E7047 100%);
-    -webkit-background-clip: text; background-clip: text; color: transparent;
+    font-size: 3.5rem;
+    letter-spacing: 0;
+    color: var(--navy);
 }
 .hero-slogan{
-    font-family:'Lora',serif; font-style:italic; color:var(--teal);
+    font-family:'Lora',serif; font-style:italic; color:var(--accent-readable);
     font-size:1.1rem; display:block; margin:.5rem 0 1.25rem;
 }
 .hero-sub{ color:var(--grey); max-width:640px; font-size:1.05rem; }
@@ -1442,11 +1441,11 @@ section{ padding:7rem 2rem; }
 .preloader{
   position:fixed; inset:0; z-index:9999;
   display:flex; align-items:center; justify-content:center;
-  background: radial-gradient(circle at 50% 40%, #ffffff 0%, #f4f8fb 55%, #e6eef5 100%);
+  background: var(--white);
   transition: opacity .7s var(--transition), visibility .7s var(--transition);
 }
 .preloader::before, .preloader::after{
-  content:""; position:absolute; border-radius:50%; filter:blur(60px); opacity:.35; pointer-events:none;
+  content:none; position:absolute; border-radius:50%; filter:blur(60px); opacity:.35; pointer-events:none;
 }
 .preloader::before{ width:340px; height:340px; background:var(--teal); top:15%; left:12%; animation:pre-float 6s ease-in-out infinite; }
 .preloader::after{ width:420px; height:420px; background:var(--navy); bottom:10%; right:10%; opacity:.18; animation:pre-float 7s ease-in-out infinite reverse; }
@@ -1520,7 +1519,7 @@ section{ padding:7rem 2rem; }
   position:relative; padding:1.75rem;
   background: linear-gradient(180deg, rgba(255,255,255,.95) 0%, rgba(251,249,243,.9) 100%);
   border:1px solid var(--grey-border);
-  border-radius:14px;
+  border-radius:8px;
   box-shadow: 0 2px 6px rgba(26,61,34,.05), 0 30px 60px -28px rgba(26,61,34,.28);
   backdrop-filter: blur(10px);
   overflow:hidden;
@@ -1571,12 +1570,12 @@ section{ padding:7rem 2rem; }
 
 /* WhatsApp button variant */
 .btn-whatsapp{
-  background: var(--wa); color:#fff; border-color: var(--wa);
-  box-shadow: 0 8px 20px -8px rgba(37,211,102,.55);
+  background: var(--navy); color:var(--white); border-color: var(--navy);
+  box-shadow: var(--shadow-soft);
 }
 .btn-whatsapp:hover{
-  background: var(--wa-dark); border-color: var(--wa-dark);
-  transform:translateY(-2px); box-shadow: 0 14px 28px -10px rgba(18,140,126,.6);
+  background: var(--navy-deep); border-color: var(--navy-deep);
+  transform:translateY(-2px); box-shadow: var(--shadow-lift);
 }
 
 /* Trust strip */
@@ -1623,7 +1622,7 @@ section{ padding:7rem 2rem; }
 }
 
 /* Service card premium touch */
-.service-card{ border-radius:10px; }
+.service-card{ border-radius:8px; }
 .service-card:hover{ background: linear-gradient(180deg, #fff 0%, var(--ivory-soft) 100%); }
 
 /* Responsive */
@@ -1636,4 +1635,39 @@ section{ padding:7rem 2rem; }
   .trust-inner{ grid-template-columns: 1fr 1fr; gap: 1.25rem; }
   .trust-n{ font-size: 1.4rem; }
   .promise{ padding: 4rem 1.5rem; }
+}
+
+/* Accessible, focused finishing details */
+h1, h2, h3, h4, .btn, .label, .hero-eyebrow, .hero-card-eyebrow,
+.trust-l, .trust-n, .promise-quote, .promise-sign, .preloader-word,
+.form-group label { letter-spacing: 0; }
+section[id] { scroll-margin-top: 130px; }
+.hero-card { backdrop-filter: none; }
+.hero-card-header { flex-wrap: wrap; gap: .75rem; }
+.nav-logo { box-shadow: none; background: var(--white); border-radius: 0; }
+.nav-brand:hover .nav-logo { box-shadow: none; }
+.nav-links:not(.active) { visibility: visible; }
+.booking-note { color: var(--grey); font-size: .85rem; line-height: 1.6; }
+.appointment-submit { align-self: flex-start; height: auto; white-space: normal; }
+.skip-link { position: fixed; top: .75rem; left: .75rem; z-index: 10000; padding: .75rem 1rem; background: var(--navy); color: var(--white); transform: translateY(-180%); }
+.skip-link:focus { transform: none; }
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 4px; }
+.menu-toggle { min-width: 44px; min-height: 44px; }
+.menu-toggle:hover { background: var(--navy-soft); }
+.footer-brand img { object-fit: contain; }
+.hero-eyebrow { white-space: normal; }
+@media (max-width: 960px) {
+  .nav-links:not(.active) { visibility: hidden; pointer-events: none; }
+  .nav-links.active { visibility: visible; }
+  .hero-inner h1 { font-size: 3rem; }
+}
+@media (max-width: 600px) {
+  .hero-inner h1 { font-size: 2.5rem; }
+  .preloader-logo { max-width: 85vw; height: auto; }
+  .preloader-word { text-align: center; max-width: 85vw; }
+  .service-card { padding: 1.5rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+  .reveal { opacity: 1; transform: none; }
 }
