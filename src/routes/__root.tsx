@@ -77,33 +77,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Life Point Medical Center — Family GP Practice | Pietermaritzburg" },
-      {
-        name: "description",
-        content:
-          "Pietermaritzburg's newest family practice. Comprehensive general practice, paediatrics, minor procedures, aesthetics and occupational health. Now accepting new patients.",
-      },
       { name: "author", content: "Life Point Medical Center" },
       { name: "facebook-domain-verification", content: "7y1avnafcxstgs9727mwu3aeunlw90" },
-      { property: "og:title", content: "Life Point Medical Center — Family GP Practice | Pietermaritzburg" },
-      {
-        property: "og:description",
-        content:
-          "Comprehensive care, close to home. General practice, paediatrics, minor procedures, aesthetics and occupational health in Pietermaritzburg.",
-      },
-      { property: "og:type", content: "website" },
       { property: "og:site_name", content: "Life Point Medical Center" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Life Point Medical Center — Family GP Practice | Pietermaritzburg" },
-      { name: "description", content: "Pietermaritzburg's newest family practice. Comprehensive general practice, paediatrics, minor procedures, aesthetics and occupational health. Now accepting new patients." },
-      { property: "og:description", content: "Pietermaritzburg's newest family practice. Comprehensive general practice, paediatrics, minor procedures, aesthetics and occupational health. Now accepting new patients." },
-      { name: "twitter:description", content: "Pietermaritzburg's newest family practice. Comprehensive general practice, paediatrics, minor procedures, aesthetics and occupational health. Now accepting new patients." },
-      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/B7Rij9LF90ckR68el6WPvCWthEj1/social-images/social-1783445376837-sticker-option1-framed-plaque.webp" },
-      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/B7Rij9LF90ckR68el6WPvCWthEj1/social-images/social-1783445376837-sticker-option1-framed-plaque.webp" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: "/favicon.png", type: "image/png" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {

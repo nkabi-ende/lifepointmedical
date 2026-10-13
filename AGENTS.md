@@ -8,3 +8,6 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Keep public practice metadata in a browser-safe SEO module and render it through the leaf route head; this prevents conflicting sitewide sharing tags and exposes clinic details to crawlers without publishing private contact information.
+- Treat navigation hashes as in-page scrolling only; the site currently has one public content page, so canonical and sitemap entries reference that page rather than fragments.
