@@ -1,0 +1,65 @@
+name: Absolute Hosting static build check
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - deployment/absolute-hosting
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+      - name: Build website
+        run: bun run build
+      - name: Inspect generated output
+        shell: bash
+        run: |
+          echo "Build directories:"
+          for dir in dist .output; do
+            if [ -d "$dir" ]; then
+              find "$dir" -maxdepth 3 -type f | head -80
+            fi
+          done
+      - name: Verify static entry point and package
+        shell: bash
+        run: |
+          set -euo pipefail
+          STATIC_DIR=""
+          for candidate in dist .output/public dist/client; do
+            if [ -f "$candidate/index.html" ]; then
+              STATIC_DIR="$candidate"
+              break
+            fi
+          done
+          if [ -z "$STATIC_DIR" ]; then
+            echo "::error::No static index.html found. TanStack Start requires prerendering or static adaptation before Apache deployment."
+            exit 1
+          fi
+          if ! grep -qi '<html' "$STATIC_DIR/index.html"; then
+            echo "::error::Static entry point is invalid"
+            exit 1
+          fi
+          echo "Static candidate: $STATIC_DIR"
+          mkdir -p "$RUNNER_TEMP/lifepoint-site"
+          cp -a "$STATIC_DIR/." "$RUNNER_TEMP/lifepoint-site/"
+          cd "$RUNNER_TEMP/lifepoint-site"
+          zip -qr "$GITHUB_WORKSPACE/lifepointmedical-cpanel.zip" .
+      - name: Upload cPanel-ready build
+        uses: actions/upload-artifact@v4
+        with:
+          name: lifepointmedical-cpanel
+          path: lifepointmedical-cpanel.zip
+          if-no-files-found: error
