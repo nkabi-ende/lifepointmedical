@@ -1,7 +1,7 @@
 import logoAsset from "@/assets/lifepoint-uploaded-logo.webp.asset.json";
 import shareAsset from "@/assets/lifepoint-share.jpg.asset.json";
 
-export const SITE_URL = "https://lifepointmedical.lovable.app";
+export const SITE_URL = "https://lifepointmedical.co.za";
 export const SHARE_IMAGE = `${SITE_URL}${shareAsset.url}`;
 export const PRACTICE_TITLE = "Life Point Medical Center | Family GP in Pietermaritzburg";
 export const PRACTICE_DESCRIPTION = "Family GP care at Mayors Walk Centre, Pietermaritzburg. Acute and chronic care, ECGs, family planning and more. Open 7 days. Request an appointment.";
