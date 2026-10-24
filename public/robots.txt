@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://lifepointmedical.lovable.app/sitemap.xml
+Sitemap: https://lifepointmedical.co.za/sitemap.xml
