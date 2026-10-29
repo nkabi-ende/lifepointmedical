@@ -1,9 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 
-import logoAsset from "@/assets/lifepoint-uploaded-logo.webp.asset.json";
+const logoAsset = { url: "/images/lifepoint-logo.webp" };
 import { Button } from "@/components/ui/button";
-import { SITE_URL, SHARE_IMAGE, PRACTICE_TITLE, PRACTICE_DESCRIPTION, practiceSchema } from "@/lib/practice-seo";
+import { SITE_URL, SHARE_IMAGE, PRACTICE_TITLE, PRACTICE_DESCRIPTION, practiceSchema, patientQuestions } from "@/lib/practice-seo";
 
 export const Route = createFileRoute("/")({
   component: LifePointHome,
@@ -18,7 +18,7 @@ export const Route = createFileRoute("/")({
       { property: "og:locale", content: "en_ZA" },
       { property: "og:url", content: `${SITE_URL}/` },
       { property: "og:image", content: SHARE_IMAGE },
-      { property: "og:image:type", content: "image/jpeg" },
+      { property: "og:image:type", content: "image/png" },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
       { property: "og:image:alt", content: "Life Point Medical Center official logo" },
@@ -330,12 +330,11 @@ function LifePointHome() {
       <section className="hero" id="hero">
         <div className="hero-inner hero-grid">
           <div className="hero-copy">
-            <span className="hero-eyebrow reveal">Pietermaritzburg's newest family practice</span>
+            <span className="hero-eyebrow reveal">Family GP · Mayors Walk, Pietermaritzburg</span>
             <h1 className="reveal reveal-delay-1">Life Point Medical Center</h1>
             <span className="hero-slogan reveal reveal-delay-2">Your health, our focus.</span>
             <p className="hero-sub reveal reveal-delay-2">
-              Your family GP in Pietermaritzburg. General practice, minor procedures, a special interest in pediatrics, aesthetics and
-              occupational health — all under one roof, delivered with the attention your family deserves.
+              Dr T. Mncwango offers family GP care at Mayors Walk Centre, Pietermaritzburg (PMB). Everyday consultations, chronic care and care for children, with appointments available seven days a week.
             </p>
             <div className="hero-badge reveal reveal-delay-3">
               Now open — accepting new patients
@@ -441,17 +440,17 @@ function LifePointHome() {
                     <circle cx="86" cy="68" r="3.5" fill="currentColor" stroke="none" />
                   </svg>
                 </div>
-                <div className="about-name">Your Family Physician</div>
+                <div className="about-name">Dr T. Mncwango</div>
                 <div className="about-title">MBChB · Family Practice</div>
               </div>
             </div>
             <div className="about-content">
               <span className="label reveal">About the Practice</span>
               <div className="hairline reveal"></div>
-              <h2 className="reveal reveal-delay-1">A physician built for whole-family care.</h2>
+              <h2 className="reveal reveal-delay-1">Your family doctor in Pietermaritzburg.</h2>
               <div className="about-text reveal reveal-delay-1">
                 <p>
-                  Life Point is led by an MBChB-qualified family physician with a broad, rigorous
+                  Life Point is led by Dr T. Mncwango, an MBChB-qualified family physician with a broad, rigorous
                   clinical foundation built across major KwaZulu-Natal hospitals. Training spans
                   internal medicine, surgery, a special interest in pediatrics, orthopaedics,
                   anaesthesia, family medicine, and obstetrics & gynaecology — giving the depth to
@@ -577,7 +576,7 @@ function LifePointHome() {
             </div>
             <div className="info-card reveal">
               <h3><span className="dot"></span>First Visit</h3>
-              <p>Walk-ins are welcome, but booking ahead ensures you skip the queue. New patient forms can be completed on arrival.</p>
+              <p>Walk-ins are welcome, subject to availability. Booking ahead helps the practice plan your visit. New patient forms can be completed on arrival.</p>
             </div>
             <div className="info-card reveal reveal-delay-1">
               <h3><span className="dot"></span>Parking & Access</h3>
@@ -587,6 +586,25 @@ function LifePointHome() {
               <h3><span className="dot"></span>Emergencies</h3>
               <p>For life-threatening emergencies, please call emergency services or proceed to your nearest hospital casualty department.</p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="patient-questions" id="questions" aria-labelledby="questions-title">
+        <div className="section-inner questions-layout">
+          <div className="questions-intro">
+            <span className="label">Before your visit</span>
+            <h2 id="questions-title">Local care.<br />Clear answers.</h2>
+            <p>Looking for a family doctor near you in PMB? Find our practice at Mayors Walk Centre. Patients travelling from Hayfields are welcome.</p>
+            <a href="#location" onClick={handleNav("location")} className="nav-link">Find the practice →</a>
+          </div>
+          <div className="questions-list">
+            {patientQuestions.map(({ question, answer }) => (
+              <details key={question}>
+                <summary>{question}<span aria-hidden="true">+</span></summary>
+                <p>{answer}</p>
+              </details>
+            ))}
           </div>
         </div>
       </section>
@@ -780,7 +798,7 @@ function LifePointHome() {
           <div className="footer-grid">
             <div className="footer-brand">
               <img src={logoAsset.url} alt="Life Point Medical Center" />
-              <p>Pietermaritzburg's newest family practice. Comprehensive care, close to home. Your health, our focus.</p>
+              <p>Family GP · Mayors Walk, Pietermaritzburg. Comprehensive care, close to home. Your health, our focus.</p>
             </div>
             <div className="footer-col">
               <h4>Practice</h4>

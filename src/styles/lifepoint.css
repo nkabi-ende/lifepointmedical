@@ -1671,3 +1671,22 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   .reveal { opacity: 1; transform: none; }
 }
+
+/* Quiet, editorial patient information with native accessible disclosures. */
+.questions-layout { display: grid; grid-template-columns: .8fr 1.2fr; gap: 5rem; }
+.questions-intro h2 { font-size: clamp(2rem, 4vw, 3rem); margin: 1rem 0 1.5rem; }
+.questions-intro p { color: var(--grey); margin-bottom: 1.5rem; max-width: 34rem; }
+.questions-list details { border-top: 1px solid var(--grey-border); }
+.questions-list details:last-child { border-bottom: 1px solid var(--grey-border); }
+.questions-list summary { display: flex; justify-content: space-between; gap: 1.5rem; cursor: pointer; padding: 1.4rem 0; font-weight: 500; list-style: none; line-height: 1.5; }
+.questions-list summary::-webkit-details-marker { display: none; }
+.questions-list summary span { color: var(--navy); font-size: 1.4rem; }
+.questions-list details[open] summary span { transform: rotate(45deg); }
+.questions-list details p { color: var(--grey); padding: 0 2.5rem 1.5rem 0; }
+.questions-list summary:focus-visible { outline: 2px solid var(--navy); outline-offset: 4px; }
+.hero::before { clip-path: none; background: var(--navy-soft); width: 34%; }
+.service-card { border-radius: 0; box-shadow: none; }
+.service-card:hover { box-shadow: none; background: var(--white); }
+.credential { border: 0; border-top: 1px solid var(--grey-border); background: transparent; padding: 1rem 0; }
+.credential:hover { box-shadow: none; }
+@media (max-width: 760px) { .questions-layout { grid-template-columns: 1fr; gap: 2rem; } .hero::before { display: none; } }
