@@ -24,7 +24,7 @@ export const practiceSchema = {
       logo: `${SITE_URL}/images/lifepoint-logo.webp`,
       image: SHARE_IMAGE,
       description: PRACTICE_DESCRIPTION,
-      alternateName: ["LifePoint Medical", "Life Point Medical"]
+      alternateName: ["LifePoint Medical", "Life Point Medical"],
       medicalSpecialty: "PrimaryCare",
       email: "info@lifepointmedical.co.za",
       areaServed: ["Pietermaritzburg", "Mayors Walk", "Manor", "Hayfields", "Prestbury", "Blackridge", "Boughton", "Clarendon"].map(name => ({ "@type": "Place", name })),
