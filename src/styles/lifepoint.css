@@ -1690,3 +1690,49 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .credential { border: 0; border-top: 1px solid var(--grey-border); background: transparent; padding: 1rem 0; }
 .credential:hover { box-shadow: none; }
 @media (max-width: 760px) { .questions-layout { grid-template-columns: 1fr; gap: 2rem; } .hero::before { display: none; } }
+
+
+/* Two independent surgery locations — restrained, mobile-first presentation */
+.location-choices {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+.location-card {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  border: 1px solid var(--grey-border);
+  box-shadow: 0 12px 34px rgba(11, 32, 59, .045);
+}
+.location-card-copy { padding: 2rem; display: flex; flex-direction: column; flex: 1; }
+.location-card h3 { font-family: 'Lora', serif; color: var(--navy); font-size: clamp(1.4rem, 2.1vw, 1.85rem); line-height: 1.25; margin: .9rem 0 .65rem; }
+.location-card-copy > p { color: var(--grey); font-size: .96rem; line-height: 1.7; }
+.location-tag { color: var(--navy); font-size: .72rem; font-weight: 600; letter-spacing: .13em; text-transform: uppercase; }
+.location-tag-new { color: #087f80; }
+.location-card address {
+  margin: 1.35rem 0 .8rem;
+  padding: .9rem 1rem;
+  border-left: 2px solid var(--teal);
+  background: var(--grey-light);
+  color: var(--navy);
+  font-size: .96rem;
+  font-style: normal;
+  line-height: 1.65;
+}
+.location-hours-note { color: var(--grey); font-size: .78rem !important; line-height: 1.55; margin: .8rem 0; }
+.hero-card .location-hours-note { margin: .5rem 0; }
+.location-card-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: auto; padding-top: 1rem; }
+.location-card-actions .btn { min-height: 42px; font-size: .82rem; text-align: center; }
+.location-card-map { width: 100%; aspect-ratio: 16 / 9; overflow: hidden; border-top: 1px solid var(--grey-border); background: var(--grey-light); }
+.location-card-map iframe { display: block; width: 100%; height: 100%; border: 0; }
+.hero-meta-item a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+@media (max-width: 900px) {
+  .location-choices { grid-template-columns: 1fr; max-width: 670px; margin-inline: auto; }
+}
+@media (max-width: 600px) {
+  .location-card-copy { padding: 1.4rem; }
+  .location-card-actions { flex-direction: column; }
+  .location-card-actions .btn { width: 100%; }
+}
