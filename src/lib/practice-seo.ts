@@ -1,16 +1,16 @@
 export const SITE_URL = "https://lifepointmedical.co.za";
 export const SHARE_IMAGE = `${SITE_URL}/images/lifepoint-social.png`;
 export const PRACTICE_TITLE = "LifePoint Medical Centre | GP in Pietermaritzburg";
-export const PRACTICE_DESCRIPTION = "Dr T. Mncwango offers family GP care at Mayors Walk Centre and Ringpharm Manor Med Pharmacy, with a new Bakumed Pharmacy venue at 31 Boshoff Street, Pietermaritzburg. Confirm availability via WhatsApp.";
+export const PRACTICE_DESCRIPTION = "Dr T. Mncwango offers family GP care at Mayors Walk Centre and Ringpharm Manor Med Pharmacy, with a new consulting room inside Bakumed Pharmacy at 31 Boshoff Street, Pietermaritzburg. Confirm availability via WhatsApp.";
 
 // These answers are also rendered on the page; keep the two in sync.
 export const patientQuestions = [
-  { question: "Where does Dr T. Mncwango consult in Pietermaritzburg?", answer: "Dr T. Mncwango has two established consulting locations: LifePoint Medical Centre, Unit 02, Mayors Walk Centre, 68 Mayors Walk Road; and a consulting room inside Ringpharm Manor Med Pharmacy, 2 Ohrtmann Road, Manor. A new venue at Bakumed Pharmacy on 31 Boshoff Street is being prepared; please confirm availability before visiting." },
+  { question: "Where does Dr T. Mncwango consult in Pietermaritzburg?", answer: "Dr T. Mncwango has two established consulting locations: LifePoint Medical Centre, Unit 02, Mayors Walk Centre, 68 Mayors Walk Road; and a consulting room inside Ringpharm Manor Med Pharmacy, 2 Ohrtmann Road, Manor. A new separate LifePoint consulting room inside Bakumed Pharmacy on 31 Boshoff Street is being prepared; please confirm availability before visiting." },
   { question: "Where is the new Manor consulting room?", answer: "The Manor consulting room is inside Ringpharm Manor Med Pharmacy, 2 Ohrtmann Road, Manor, Pietermaritzburg, 3201. It is separate from the Mayors Walk surgery. Please request an appointment via WhatsApp before visiting." },
-  { question: "Where is the new Boshoff Street venue?", answer: "The new LifePoint venue is planned for Bakumed Pharmacy, Shop 2, 31 Boshoff Street (Total Garage), Pietermaritzburg, 3201. The consultation start date and hours are not confirmed yet. Please contact LifePoint via WhatsApp before visiting." },
+  { question: "Where is the new Bakumed consulting room?", answer: "The new LifePoint consulting room is inside Bakumed Pharmacy, Shop 2, 31 Boshoff Street (Total Garage), Pietermaritzburg, 3201. LifePoint is not taking over the pharmacy. The consultation start date and hours are not confirmed yet. Please contact LifePoint via WhatsApp before visiting." },
   { question: "Can I visit from Hayfields for a family GP consultation?", answer: "Yes. Patients from Hayfields and across Pietermaritzburg can enquire about appointments at either Mayors Walk Centre or the Manor pharmacy consulting room. Choose your preferred location when booking." },
   { question: "Is the Mayors Walk practice open on weekends?", answer: "The Mayors Walk practice lists Monday to Friday from 08:00 to 19:00, and Saturday and Sunday from 08:00 to 14:00. Consulting times at Ringpharm Manor Med Pharmacy may differ; contact the practice to confirm." },
-  { question: "How do I request an appointment?", answer: "Use the WhatsApp booking link or the enquiry form, select Mayors Walk, Manor or the new Bakumed venue and send your request. Consultation availability at Bakumed is still to be confirmed. The team will confirm your appointment and consulting hours." },
+  { question: "How do I request an appointment?", answer: "Use the WhatsApp booking link or the enquiry form, select Mayors Walk, Manor or the new Bakumed consulting room and send your request. Consultation availability at Bakumed is still to be confirmed. The team will confirm your appointment and consulting hours." },
   { question: "Does LifePoint accept medical aid and cash patients?", answer: "Most major medical aids are accepted via direct billing, and cash consultations are available. Confirm your scheme, benefits and consultation fees when booking." },
 ];
 
@@ -67,15 +67,15 @@ export const practiceSchema = {
     },
     {
       "@type": "Place",
-      "@id": `${SITE_URL}/#bakumed-venue`,
-      name: "New LifePoint Medical Centre venue at Bakumed Pharmacy",
-      description: "Planned LifePoint consulting venue. Consultation start date, booking availability and doctor consulting hours must be confirmed with the practice.",
+      "@id": `${SITE_URL}/#bakumed-consulting-room`,
+      name: "LifePoint Medical Centre — Bakumed consulting room",
+      description: "New separate LifePoint GP consulting room inside Bakumed Pharmacy, not a pharmacy takeover. Consultation start date, booking availability and doctor consulting hours must be confirmed with the practice.",
       url: `${SITE_URL}/#location`,
       containedInPlace: { "@type": "Pharmacy", name: "Bakumed Pharmacy" },
       hasMap: "https://www.google.com/maps/search/?api=1&query=Bakumed+Pharmacy+31+Boshoff+Street+Pietermaritzburg",
       address: {
         "@type": "PostalAddress",
-        streetAddress: "Shop 2, 31 Boshoff Street",
+        streetAddress: "Inside Bakumed Pharmacy, Shop 2, 31 Boshoff Street",
         addressLocality: "Pietermaritzburg",
         postalCode: "3201",
         addressRegion: "KwaZulu-Natal",

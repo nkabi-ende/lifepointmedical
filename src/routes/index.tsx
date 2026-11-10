@@ -330,11 +330,11 @@ function LifePointHome() {
       <section className="hero" id="hero">
         <div className="hero-inner hero-grid">
           <div className="hero-copy">
-            <span className="hero-eyebrow reveal">Family GP · Pietermaritzburg · New Boshoff Street venue</span>
+            <span className="hero-eyebrow reveal">Family GP · Pietermaritzburg · New Boshoff Street consulting room</span>
             <h1 className="reveal reveal-delay-1">LifePoint Medical Centre</h1>
             <span className="hero-slogan reveal reveal-delay-2">Your health, our focus.</span>
             <p className="hero-sub reveal reveal-delay-2">
-              Dr T. Mncwango offers family GP care at Mayors Walk Centre and inside Ringpharm Manor Med Pharmacy in Manor. A new LifePoint venue is being prepared at Bakumed Pharmacy on Boshoff Street; enquire to confirm availability.
+              Dr T. Mncwango offers family GP care at Mayors Walk Centre and inside Ringpharm Manor Med Pharmacy in Manor. A separate LifePoint consulting room is being prepared inside Bakumed Pharmacy on Boshoff Street; enquire to confirm availability.
             </p>
             <div className="hero-badge reveal reveal-delay-3">
               Now open — accepting new patients
@@ -361,7 +361,7 @@ function LifePointHome() {
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
                   <circle cx="12" cy="10" r="3" />
                 </svg>
-                <a href="#location" onClick={handleNav("location")}>Mayors Walk · Manor · New Boshoff Street venue — view locations</a>
+                <a href="#location" onClick={handleNav("location")}>Mayors Walk · Manor · New Boshoff Street consulting room — view locations</a>
               </div>
               <div className="hero-meta-item">
                 <svg className="hero-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
@@ -596,7 +596,7 @@ function LifePointHome() {
           <div className="questions-intro">
             <span className="label">Before your visit</span>
             <h2 id="questions-title">Local care.<br />Clear answers.</h2>
-            <p>Looking for a family doctor in PMB? Find LifePoint at Mayors Walk Centre and Ringpharm Manor Med Pharmacy, or enquire about the new Bakumed Pharmacy venue on Boshoff Street.</p>
+            <p>Looking for a family doctor in PMB? Find LifePoint at Mayors Walk Centre and Ringpharm Manor Med Pharmacy, or enquire about the new LifePoint consulting room inside Bakumed Pharmacy on Boshoff Street.</p>
             <a href="#location" onClick={handleNav("location")} className="nav-link">View locations →</a>
           </div>
           <div className="questions-list">
@@ -617,7 +617,7 @@ function LifePointHome() {
             <span className="label reveal">Find Us</span>
             <div className="hairline hairline-center reveal"></div>
             <h2 className="reveal reveal-delay-1">Find LifePoint in Pietermaritzburg</h2>
-            <p className="reveal reveal-delay-2">Visit either established consulting location or enquire about our new venue at Bakumed Pharmacy, 31 Boshoff Street. The new venue’s start date and hours are to be confirmed.</p>
+            <p className="reveal reveal-delay-2">Visit either established consulting location or enquire about our new consulting room inside Bakumed Pharmacy, 31 Boshoff Street. Its start date and consulting hours are to be confirmed.</p>
           </div>
           <div className="location-choices">
             <article className="location-card reveal">
@@ -654,13 +654,13 @@ function LifePointHome() {
             </article>
             <article className="location-card reveal reveal-delay-2">
               <div className="location-card-copy">
-                <span className="location-tag location-tag-new">New venue · Consulting availability to be confirmed</span>
-                <h3>Bakumed Pharmacy · Boshoff Street</h3>
-                <p>LifePoint is preparing a new consulting venue at Bakumed Pharmacy. <strong>Start date and patient appointments are not yet confirmed.</strong></p>
-                <address>Bakumed Pharmacy · Shop 2<br />31 Boshoff Street (Total Garage)<br />Pietermaritzburg, 3201</address>
+                <span className="location-tag location-tag-new">New consulting room · Availability to be confirmed</span>
+                <h3>LifePoint · Bakumed Pharmacy</h3>
+                <p>Dr T. Mncwango is preparing a separate LifePoint consulting room <strong>inside Bakumed Pharmacy</strong>, similar to the Ringpharm arrangement. The pharmacy remains an independent business. <strong>Start date and patient appointments are not yet confirmed.</strong></p>
+                <address>Inside Bakumed Pharmacy, Shop 2<br />31 Boshoff Street (Total Garage)<br />Pietermaritzburg, 3201</address>
                 <p className="location-hours-note">Please confirm when Dr T. Mncwango will consult here. Pharmacy trading hours are not the doctor's consulting hours.</p>
                 <div className="location-card-actions">
-                  <a className="btn btn-solid btn-sm" href={WA_LINK("Hello LifePoint Medical Centre, I would like to enquire when consultations at the new Bakumed Pharmacy venue, 31 Boshoff Street, will begin.")} target="_blank" rel="noopener noreferrer">Enquire about Bakumed</a>
+                  <a className="btn btn-solid btn-sm" href={WA_LINK("Hello LifePoint Medical Centre, I would like to enquire when consultations at the LifePoint room inside Bakumed Pharmacy, 31 Boshoff Street, will begin.")} target="_blank" rel="noopener noreferrer">Enquire about Bakumed</a>
                   <a className="btn btn-outline btn-sm" href="https://www.google.com/maps/search/?api=1&query=Bakumed+Pharmacy+31+Boshoff+Street+Pietermaritzburg" target="_blank" rel="noopener noreferrer">Directions</a>
                 </div>
               </div>
@@ -721,7 +721,7 @@ function LifePointHome() {
                   <option value="" disabled>Choose a surgery…</option>
                   <option value="LifePoint Medical Centre — Mayors Walk">LifePoint Medical Centre — Mayors Walk</option>
                   <option value="Ringpharm Manor Med Pharmacy — Manor">Inside Ringpharm Manor Med Pharmacy — Manor</option>
-                  <option value="Bakumed Pharmacy — Boshoff Street (new venue; availability to be confirmed)">Bakumed Pharmacy — Boshoff Street (confirm availability)</option>
+                  <option value="LifePoint consulting room — inside Bakumed Pharmacy (availability to be confirmed)">Inside Bakumed Pharmacy — Boshoff Street (confirm availability)</option>
                 </select>
               </div>
               <div className="form-row">
@@ -834,7 +834,7 @@ function LifePointHome() {
           <div className="footer-grid">
             <div className="footer-brand">
               <img src={logoAsset.url} alt="LifePoint Medical Centre" />
-              <p>Family GP care at Mayors Walk and Manor, with a new venue planned for Bakumed Pharmacy on Boshoff Street. Your health, our focus.</p>
+              <p>Family GP care at Mayors Walk and Manor, with a new consulting room inside Bakumed Pharmacy on Boshoff Street. Your health, our focus.</p>
             </div>
             <div className="footer-col">
               <h4>Practice</h4>
@@ -852,7 +852,7 @@ function LifePointHome() {
                 <li><a href="#location" onClick={handleNav("location")}>68 Mayors Walk Road</a></li>
                 <li><a href="#location" onClick={handleNav("location")}>Inside Ringpharm Manor Med Pharmacy</a></li>
                 <li><a href="#location" onClick={handleNav("location")}>2 Ohrtmann Road, Manor</a></li>
-                <li><a href="#location" onClick={handleNav("location")}>New venue: Bakumed Pharmacy, 31 Boshoff St</a></li>
+                <li><a href="#location" onClick={handleNav("location")}>New consulting room: inside Bakumed Pharmacy, 31 Boshoff St</a></li>
               </ul>
             </div>
             <div className="footer-col">
