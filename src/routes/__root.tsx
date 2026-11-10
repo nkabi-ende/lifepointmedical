@@ -77,9 +77,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { name: "author", content: "LifePoint Medical Center" },
+      { name: "author", content: "LifePoint Medical Centre" },
+      // Meta Business Settings > Domains: preserve the exact HTML verification token.
       { name: "facebook-domain-verification", content: "7y1avnafcxstgs9727mwu3aeunlw90" },
-      { property: "og:site_name", content: "LifePoint Medical Center" },
+      { property: "og:site_name", content: "LifePoint Medical Centre" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
