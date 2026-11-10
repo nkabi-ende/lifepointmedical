@@ -1692,10 +1692,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 @media (max-width: 760px) { .questions-layout { grid-template-columns: 1fr; gap: 2rem; } .hero::before { display: none; } }
 
 
-/* Two independent surgery locations — restrained, mobile-first presentation */
+/* Two established surgeries and one new venue — restrained, mobile-first presentation */
 .location-choices {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.5rem;
 }
 .location-card {
@@ -1728,6 +1728,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .location-card-map { width: 100%; aspect-ratio: 16 / 9; overflow: hidden; border-top: 1px solid var(--grey-border); background: var(--grey-light); }
 .location-card-map iframe { display: block; width: 100%; height: 100%; border: 0; }
 .hero-meta-item a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+@media (max-width: 1180px) {
+  .location-choices { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
 @media (max-width: 900px) {
   .location-choices { grid-template-columns: 1fr; max-width: 670px; margin-inline: auto; }
 }
