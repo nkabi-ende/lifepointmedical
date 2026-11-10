@@ -21,12 +21,12 @@ export const Route = createFileRoute("/")({
       { property: "og:image:type", content: "image/png" },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
-      { property: "og:image:alt", content: "LifePoint Medical Center official logo" },
+      { property: "og:image:alt", content: "LifePoint Medical Centre official logo" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: PRACTICE_TITLE },
       { name: "twitter:description", content: PRACTICE_DESCRIPTION },
       { name: "twitter:image", content: SHARE_IMAGE },
-      { name: "twitter:image:alt", content: "LifePoint Medical Center official logo" },
+      { name: "twitter:image:alt", content: "LifePoint Medical Centre official logo" },
     ],
     links: [{ rel: "canonical", href: `${SITE_URL}/` }, { rel: "preload", as: "image", href: logoAsset.url }],
     scripts: [{ type: "application/ld+json", children: JSON.stringify(practiceSchema) }],
@@ -291,7 +291,7 @@ function LifePointHome() {
                 <path d="M0 20 L60 20 L72 8 L86 32 L100 4 L112 28 L124 20 L220 20" className="preloader-ecg-path" />
               </svg>
             </div>
-            <div className="preloader-word">LifePoint Medical Center</div>
+            <div className="preloader-word">LifePoint Medical Centre</div>
           </div>
         </div>
       )}
@@ -300,7 +300,7 @@ function LifePointHome() {
       <nav className={`nav${scrolled ? " scrolled" : ""}`} id="nav">
         <div className="nav-inner">
           <a href="#hero" className="nav-brand" onClick={handleNav("hero")}>
-            <img src={logoAsset.url} alt="LifePoint Medical Center" className="nav-logo" width={1000} height={313} fetchPriority="high" />
+            <img src={logoAsset.url} alt="LifePoint Medical Centre" className="nav-logo" width={1000} height={313} fetchPriority="high" />
           </a>
           <Button variant="ghost" size="icon"
             className={`menu-toggle${menuOpen ? " active" : ""}`}
@@ -330,18 +330,18 @@ function LifePointHome() {
       <section className="hero" id="hero">
         <div className="hero-inner hero-grid">
           <div className="hero-copy">
-            <span className="hero-eyebrow reveal">Family GP · Two Pietermaritzburg locations</span>
-            <h1 className="reveal reveal-delay-1">LifePoint Medical Center</h1>
+            <span className="hero-eyebrow reveal">Family GP · Pietermaritzburg · New Boshoff Street venue</span>
+            <h1 className="reveal reveal-delay-1">LifePoint Medical Centre</h1>
             <span className="hero-slogan reveal reveal-delay-2">Your health, our focus.</span>
             <p className="hero-sub reveal reveal-delay-2">
-              Dr T. Mncwango offers family GP care at LifePoint Medical Center in Mayors Walk and a second consulting room inside Ringpharm Manor Med Pharmacy in Manor. Choose the location most convenient for you.
+              Dr T. Mncwango offers family GP care at Mayors Walk Centre and inside Ringpharm Manor Med Pharmacy in Manor. A new LifePoint venue is being prepared at Bakumed Pharmacy on Boshoff Street; enquire to confirm availability.
             </p>
             <div className="hero-badge reveal reveal-delay-3">
               Now open — accepting new patients
             </div>
             <div className="hero-ctas reveal reveal-delay-3">
               <a
-                href={WA_LINK("Hello LifePoint Medical Center, I'd like to book an appointment.")}
+                href={WA_LINK("Hello LifePoint Medical Centre, I'd like to book an appointment.")}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-whatsapp"
@@ -361,7 +361,7 @@ function LifePointHome() {
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
                   <circle cx="12" cy="10" r="3" />
                 </svg>
-                <a href="#location" onClick={handleNav("location")}>Mayors Walk Centre &amp; Ringpharm Manor Med — view both locations</a>
+                <a href="#location" onClick={handleNav("location")}>Mayors Walk · Manor · New Boshoff Street venue — view locations</a>
               </div>
               <div className="hero-meta-item">
                 <svg className="hero-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
@@ -396,7 +396,7 @@ function LifePointHome() {
               <span className="hero-chip">Family Planning</span>
             </div>
             <a
-              href={WA_LINK("Hello LifePoint Medical Center, I'd like to enquire about an appointment.")}
+              href={WA_LINK("Hello LifePoint Medical Centre, I'd like to enquire about an appointment.")}
               target="_blank"
               rel="noopener noreferrer"
               className="hero-card-cta"
@@ -596,8 +596,8 @@ function LifePointHome() {
           <div className="questions-intro">
             <span className="label">Before your visit</span>
             <h2 id="questions-title">Local care.<br />Clear answers.</h2>
-            <p>Looking for a family doctor in PMB? Find LifePoint at Mayors Walk Centre or in a consulting room inside Ringpharm Manor Med Pharmacy in Manor.</p>
-            <a href="#location" onClick={handleNav("location")} className="nav-link">View both locations →</a>
+            <p>Looking for a family doctor in PMB? Find LifePoint at Mayors Walk Centre and Ringpharm Manor Med Pharmacy, or enquire about the new Bakumed Pharmacy venue on Boshoff Street.</p>
+            <a href="#location" onClick={handleNav("location")} className="nav-link">View locations →</a>
           </div>
           <div className="questions-list">
             {patientQuestions.map(({ question, answer }) => (
@@ -610,46 +610,62 @@ function LifePointHome() {
         </div>
       </section>
 
-      {/* Separate consulting locations: Manor hours must not be inferred from Mayors Walk. */}
+      {/* Location-specific consulting hours must never be inferred from pharmacy trading hours. */}
       <section className="location" id="location">
         <div className="section-inner">
           <div className="section-header">
             <span className="label reveal">Find Us</span>
             <div className="hairline hairline-center reveal"></div>
-            <h2 className="reveal reveal-delay-1">Two consulting locations in Pietermaritzburg</h2>
-            <p className="reveal reveal-delay-2">Dr T. Mncwango consults at two separate locations. Please choose your preferred surgery and confirm appointment availability.</p>
+            <h2 className="reveal reveal-delay-1">Find LifePoint in Pietermaritzburg</h2>
+            <p className="reveal reveal-delay-2">Visit either established consulting location or enquire about our new venue at Bakumed Pharmacy, 31 Boshoff Street. The new venue’s start date and hours are to be confirmed.</p>
           </div>
           <div className="location-choices">
             <article className="location-card reveal">
               <div className="location-card-copy">
                 <span className="location-tag">Mayors Walk · Main surgery</span>
-                <h3>LifePoint Medical Center</h3>
+                <h3>LifePoint Medical Centre</h3>
                 <p>Family GP consultations at the Mayors Walk surgery.</p>
                 <address>Unit 02, Mayors Walk Centre<br />68 Mayors Walk Road<br />Pietermaritzburg, KwaZulu-Natal</address>
                 <p className="location-hours-note">Mon–Fri 08:00–19:00 · Sat &amp; Sun 08:00–14:00. Confirm availability.</p>
                 <div className="location-card-actions">
-                  <a className="btn btn-solid btn-sm" href={WA_LINK("Hello LifePoint Medical Center, I would like an appointment at Mayors Walk Centre.")} target="_blank" rel="noopener noreferrer">Enquire about Mayors Walk</a>
+                  <a className="btn btn-solid btn-sm" href={WA_LINK("Hello LifePoint Medical Centre, I would like an appointment at Mayors Walk Centre.")} target="_blank" rel="noopener noreferrer">Enquire about Mayors Walk</a>
                   <a className="btn btn-outline btn-sm" href="https://www.google.com/maps/search/?api=1&query=Unit+02+Mayors+Walk+Centre+68+Mayors+Walk+Road+Pietermaritzburg" target="_blank" rel="noopener noreferrer">Directions</a>
                 </div>
               </div>
               <div className="location-card-map">
-                <iframe title="Mayors Walk LifePoint Medical Center location map" src="https://www.google.com/maps?q=68+Mayors+Walk+Road,+Pietermaritzburg&output=embed" loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
+                <iframe title="Mayors Walk LifePoint Medical Centre location map" src="https://www.google.com/maps?q=68+Mayors+Walk+Road,+Pietermaritzburg&output=embed" loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
               </div>
             </article>
             <article className="location-card reveal reveal-delay-1">
               <div className="location-card-copy">
-                <span className="location-tag location-tag-new">New consulting room · Manor</span>
+                <span className="location-tag location-tag-new">Manor consulting room</span>
                 <h3>Ringpharm Manor Med Pharmacy</h3>
                 <p>Dr T. Mncwango has a separate consulting room <strong>inside the pharmacy</strong>.</p>
                 <address>Inside Ringpharm Manor Med Pharmacy<br />2 Ohrtmann Road, Manor<br />Pietermaritzburg, 3201</address>
                 <p className="location-hours-note">Consulting times may differ from Mayors Walk. Please confirm by WhatsApp before visiting.</p>
                 <div className="location-card-actions">
-                  <a className="btn btn-solid btn-sm" href={WA_LINK("Hello LifePoint Medical Center, I would like an appointment at the consulting room inside Ringpharm Manor Med Pharmacy, 2 Ohrtmann Road.")} target="_blank" rel="noopener noreferrer">Enquire about Manor</a>
+                  <a className="btn btn-solid btn-sm" href={WA_LINK("Hello LifePoint Medical Centre, I would like an appointment at the consulting room inside Ringpharm Manor Med Pharmacy, 2 Ohrtmann Road.")} target="_blank" rel="noopener noreferrer">Enquire about Manor</a>
                   <a className="btn btn-outline btn-sm" href="https://www.google.com/maps/search/?api=1&query=Ringpharm+Manor+Med+Pharmacy+2+Ohrtmann+Road+Pietermaritzburg" target="_blank" rel="noopener noreferrer">Directions</a>
                 </div>
               </div>
               <div className="location-card-map">
                 <iframe title="Ringpharm Manor Med Pharmacy location map" src="https://www.google.com/maps?q=Ringpharm+Manor+Med+Pharmacy+2+Ohrtmann+Road+Pietermaritzburg&output=embed" loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
+              </div>
+            </article>
+            <article className="location-card reveal reveal-delay-2">
+              <div className="location-card-copy">
+                <span className="location-tag location-tag-new">New venue · Consulting availability to be confirmed</span>
+                <h3>Bakumed Pharmacy · Boshoff Street</h3>
+                <p>LifePoint is preparing a new consulting venue at Bakumed Pharmacy. <strong>Start date and patient appointments are not yet confirmed.</strong></p>
+                <address>Bakumed Pharmacy · Shop 2<br />31 Boshoff Street (Total Garage)<br />Pietermaritzburg, 3201</address>
+                <p className="location-hours-note">Please confirm when Dr T. Mncwango will consult here. Pharmacy trading hours are not the doctor's consulting hours.</p>
+                <div className="location-card-actions">
+                  <a className="btn btn-solid btn-sm" href={WA_LINK("Hello LifePoint Medical Centre, I would like to enquire when consultations at the new Bakumed Pharmacy venue, 31 Boshoff Street, will begin.")} target="_blank" rel="noopener noreferrer">Enquire about Bakumed</a>
+                  <a className="btn btn-outline btn-sm" href="https://www.google.com/maps/search/?api=1&query=Bakumed+Pharmacy+31+Boshoff+Street+Pietermaritzburg" target="_blank" rel="noopener noreferrer">Directions</a>
+                </div>
+              </div>
+              <div className="location-card-map">
+                <iframe title="Bakumed Pharmacy Boshoff Street venue map" src="https://www.google.com/maps?q=Bakumed+Pharmacy+31+Boshoff+Street+Pietermaritzburg&output=embed" loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
               </div>
             </article>
           </div>
@@ -676,7 +692,7 @@ function LifePointHome() {
                 const f = e.currentTarget as HTMLFormElement;
                 const data = new FormData(f);
                 const lines = [
-                  "Hello LifePoint Medical Center, I'd like to request an appointment.",
+                  "Hello LifePoint Medical Centre, I'd like to request an appointment.",
                   "",
                   `Name: ${data.get("name") || "—"}`,
                   `Phone: ${data.get("phone") || "—"}`,
@@ -703,8 +719,9 @@ function LifePointHome() {
                 <label htmlFor="location-choice">Preferred Consulting Location</label>
                 <select id="location-choice" name="location" required defaultValue="">
                   <option value="" disabled>Choose a surgery…</option>
-                  <option value="LifePoint Medical Center — Mayors Walk">LifePoint Medical Center — Mayors Walk</option>
+                  <option value="LifePoint Medical Centre — Mayors Walk">LifePoint Medical Centre — Mayors Walk</option>
                   <option value="Ringpharm Manor Med Pharmacy — Manor">Inside Ringpharm Manor Med Pharmacy — Manor</option>
+                  <option value="Bakumed Pharmacy — Boshoff Street (new venue; availability to be confirmed)">Bakumed Pharmacy — Boshoff Street (confirm availability)</option>
                 </select>
               </div>
               <div className="form-row">
@@ -749,7 +766,7 @@ function LifePointHome() {
                 </h3>
                 <p>Arrange a call with the practice during operating hours.</p>
                 <p style={{ marginTop: "0.5rem" }}>
-                  <a href={WA_LINK("Hello LifePoint Medical Center, please arrange a call with the practice.")} target="_blank" rel="noopener noreferrer">Request a call via WhatsApp</a>
+                  <a href={WA_LINK("Hello LifePoint Medical Centre, please arrange a call with the practice.")} target="_blank" rel="noopener noreferrer">Request a call via WhatsApp</a>
                 </p>
               </div>
               <div className="contact-method">
@@ -774,14 +791,14 @@ function LifePointHome() {
                 </h3>
                 <p>Fastest way to reach the practice. Message us for quick enquiries and appointment requests.</p>
                 <p style={{ marginTop: "0.5rem" }}>
-                  <a href={WA_LINK("Hello LifePoint Medical Center, I'd like to enquire.")} target="_blank" rel="noopener noreferrer">
+                  <a href={WA_LINK("Hello LifePoint Medical Centre, I'd like to enquire.")} target="_blank" rel="noopener noreferrer">
                     Open WhatsApp chat
                   </a>
                 </p>
               </div>
               <div className="contact-actions">
                 <a
-                  href={WA_LINK("Hello LifePoint Medical Center, I'd like to book an appointment.")}
+                  href={WA_LINK("Hello LifePoint Medical Centre, I'd like to book an appointment.")}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn-solid"
@@ -793,7 +810,7 @@ function LifePointHome() {
                   Message on WhatsApp
                 </a>
                 <a
-                  href={WA_LINK("Hello LifePoint Medical Center, I'd like to speak with the practice.")}
+                  href={WA_LINK("Hello LifePoint Medical Centre, I'd like to speak with the practice.")}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn-outline"
@@ -816,8 +833,8 @@ function LifePointHome() {
         <div className="footer-inner">
           <div className="footer-grid">
             <div className="footer-brand">
-              <img src={logoAsset.url} alt="LifePoint Medical Center" />
-              <p>Family GP care at Mayors Walk Centre and inside Ringpharm Manor Med Pharmacy, Pietermaritzburg. Your health, our focus.</p>
+              <img src={logoAsset.url} alt="LifePoint Medical Centre" />
+              <p>Family GP care at Mayors Walk and Manor, with a new venue planned for Bakumed Pharmacy on Boshoff Street. Your health, our focus.</p>
             </div>
             <div className="footer-col">
               <h4>Practice</h4>
@@ -835,6 +852,7 @@ function LifePointHome() {
                 <li><a href="#location" onClick={handleNav("location")}>68 Mayors Walk Road</a></li>
                 <li><a href="#location" onClick={handleNav("location")}>Inside Ringpharm Manor Med Pharmacy</a></li>
                 <li><a href="#location" onClick={handleNav("location")}>2 Ohrtmann Road, Manor</a></li>
+                <li><a href="#location" onClick={handleNav("location")}>New venue: Bakumed Pharmacy, 31 Boshoff St</a></li>
               </ul>
             </div>
             <div className="footer-col">
@@ -848,7 +866,7 @@ function LifePointHome() {
           </div>
           <div className="footer-bottom">
             <p>© {new Date().getFullYear()} Lifepoint Medical (Pty) Ltd. All rights reserved.</p>
-            <p>LifePoint Medical Center · Family GP Practice</p>
+            <p>LifePoint Medical Centre · Family GP Practice</p>
           </div>
         </div>
       </footer>
@@ -856,7 +874,7 @@ function LifePointHome() {
       {/* Mobile sticky CTA */}
       <div className="mobile-cta">
         <a
-          href={WA_LINK("Hello LifePoint Medical Center, I'd like to book an appointment.")}
+          href={WA_LINK("Hello LifePoint Medical Centre, I'd like to book an appointment.")}
           target="_blank"
           rel="noopener noreferrer"
           className="btn btn-outline btn-sm"
