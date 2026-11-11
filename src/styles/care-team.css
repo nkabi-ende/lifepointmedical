@@ -1,0 +1,171 @@
+.care-team {
+  background: var(--white);
+  scroll-margin-top: 6rem;
+}
+
+.care-team-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 3rem;
+  margin-bottom: 2.75rem;
+}
+
+.care-team-heading h2 {
+  font-size: clamp(2rem, 3.6vw, 2.9rem);
+}
+
+.care-team-heading > p {
+  max-width: 370px;
+  color: var(--grey);
+}
+
+.care-team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.care-team-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  border: 1px solid var(--grey-border);
+  border-radius: 8px;
+  padding: 2rem;
+  scroll-margin-top: 6rem;
+  background: var(--white);
+}
+
+.care-team-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  color: var(--accent-readable);
+}
+
+.care-team-monogram {
+  display: grid;
+  place-items: center;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--navy-soft);
+  border: 1px solid var(--grey-border);
+  color: var(--navy);
+  font:
+    500 1.65rem "Lora",
+    Georgia,
+    serif;
+}
+
+.care-team-role {
+  color: var(--accent-readable);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+
+.care-team-card h3 {
+  font-size: clamp(1.3rem, 2vw, 1.65rem);
+  overflow-wrap: anywhere;
+}
+
+.care-team-full-name {
+  font-size: 0.78rem;
+  color: var(--grey);
+  margin-top: 0.35rem;
+}
+
+.care-team-focus {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-top: 1.25rem;
+}
+
+.care-team-description {
+  color: var(--grey);
+  font-size: 0.9rem;
+  line-height: 1.8;
+  margin-top: 0.65rem;
+  margin-bottom: 1.25rem;
+}
+
+.care-team-registration {
+  font-size: 0.75rem;
+  color: var(--grey);
+  margin-bottom: 1.25rem;
+}
+
+.care-team-booking {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.65rem;
+  margin-top: auto;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--grey-border);
+  color: var(--navy);
+  font-size: 0.8rem;
+  font-weight: 600;
+  min-height: 48px;
+}
+
+.care-team-booking svg {
+  flex-shrink: 0;
+  color: var(--accent-readable);
+}
+
+.care-team-booking:hover {
+  color: var(--accent-readable);
+}
+
+.care-team-booking:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 5px;
+}
+
+.care-team-note {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  color: var(--grey);
+  font-size: 0.75rem;
+}
+
+.care-team-note > span {
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .care-team-heading {
+    display: block;
+  }
+
+  .care-team-heading > p {
+    max-width: 550px;
+    margin-top: 1.25rem;
+  }
+
+  .care-team-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .care-team-card {
+    padding: 1.5rem;
+  }
+
+  .care-team-card h3 {
+    font-size: 1.6rem;
+  }
+
+  .care-team-note {
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+}

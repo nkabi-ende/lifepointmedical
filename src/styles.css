@@ -1,6 +1,7 @@
 @import "tailwindcss" source(none);
 @import "tw-animate-css";
 @import "./styles/lifepoint.css";
+@import "./styles/care-team.css";
 @source "../src";
 
 @custom-variant dark (&:is(.dark *));

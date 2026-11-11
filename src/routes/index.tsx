@@ -3,6 +3,8 @@ import { useEffect, useRef, useState } from "react";
 
 const logoAsset = { url: "/images/lifepoint-logo.webp" };
 import { Button } from "@/components/ui/button";
+import { CareTeam } from "@/components/CareTeam";
+import { careTeam } from "@/lib/care-team";
 import { SITE_URL, SHARE_IMAGE, PRACTICE_TITLE, PRACTICE_DESCRIPTION, practiceSchema, patientQuestions } from "@/lib/practice-seo";
 
 export const Route = createFileRoute("/")({
@@ -144,11 +146,11 @@ const services = [
         <path d="M9 2h6" />
       </>
     ),
-    title: "IV Drips & Aesthetics",
+    title: "Doctor-assessed IV Services",
     items: [
-      "IV Glow, hydration & vitamin infusions",
-      "Wellness & recovery drips",
-      "Skin health consultations",
+      "Clinical assessment before treatment",
+      "Appropriate infusion care",
+      "Treatment suitability discussed with your doctor",
     ],
   },
   {
@@ -157,7 +159,35 @@ const services = [
     items: [
       "Physician-supervised programmes",
       "Metabolic & bloodwork assessment",
-      "Nutrition & lifestyle coaching",
+      "Dietitian support with Njabulo Mvundla",
+    ],
+  },
+  {
+    icon: (
+      <>
+        <path d="M8 4h8v6a4 4 0 0 1-8 0z" />
+        <path d="M12 14v4a3 3 0 0 0 6 0v-1M7 3h10M9 7h6" />
+      </>
+    ),
+    title: "Ultrasound Scans",
+    items: [
+      "Scan options and appointment enquiries",
+      "Booking and preparation information",
+      "Confirm scan availability and location with reception",
+    ],
+  },
+  {
+    icon: (
+      <>
+        <path d="M20 4c-8-1-15 3-15 10a5 5 0 0 0 5 5c7 0 11-7 10-15z" />
+        <path d="M4 21 15 10" />
+      </>
+    ),
+    title: "Dietitian & Nutrition Support",
+    items: [
+      "Consultations with Njabulo Mvundla",
+      "Personalised nutrition and weight-management support",
+      "Practice no. DT 1208241",
     ],
   },
   {
@@ -315,7 +345,7 @@ function LifePointHome() {
           </Button>
           <div id="primary-navigation" className={`nav-links${menuOpen ? " active" : ""}`}>
             <a href="#services" className="nav-link" onClick={handleNav("services")}>Services</a>
-            <a href="#about" className="nav-link" onClick={handleNav("about")}>About the Practice</a>
+            <a href="#team" className="nav-link" onClick={handleNav("team")}>Our Team</a>
             <a href="#location" className="nav-link" onClick={handleNav("location")}>Locations</a>
             <a href="#contact" className="nav-link" onClick={handleNav("contact")}>Contact</a>
             <a href="#contact" className="btn btn-outline btn-sm" onClick={handleNav("contact")}>
@@ -334,7 +364,7 @@ function LifePointHome() {
             <h1 className="reveal reveal-delay-1">LifePoint Medical Centre</h1>
             <span className="hero-slogan reveal reveal-delay-2">Your health, our focus.</span>
             <p className="hero-sub reveal reveal-delay-2">
-              Dr T. Mncwango offers family GP care at Mayors Walk Centre and inside Ringpharm Manor Med Pharmacy in Manor. A separate LifePoint consulting room is being prepared inside Bakumed Pharmacy on Boshoff Street; enquire to confirm availability.
+              Family GP care with Dr T. Mncwango and Dr M. Luthuli, with dietitian support from Njabulo Mvundla. Find us at Mayors Walk and our in-pharmacy consulting rooms in Manor and Boshoff Street. Reception will confirm your practitioner, service and location when booking.
             </p>
             <div className="hero-badge reveal reveal-delay-3">
               Now open — accepting new patients
@@ -482,6 +512,8 @@ function LifePointHome() {
           </div>
         </div>
       </section>
+
+      <CareTeam whatsappLink={WA_LINK} />
 
       {/* Family Promise band */}
       <section className="promise" aria-label="Our promise">
@@ -696,7 +728,8 @@ function LifePointHome() {
                   "",
                   `Name: ${data.get("name") || "—"}`,
                   `Phone: ${data.get("phone") || "—"}`,
-                   `Preferred surgery: ${data.get("location") || "—"}`,
+                  `Preferred surgery: ${data.get("location") || "—"}`,
+                  `Preferred practitioner: ${data.get("practitioner") || "Any available practitioner"}`,
                   `Payment: ${data.get("payment") || "—"}`,
                   `Preferred date: ${data.get("date") || "—"}`,
                   `Preferred time: ${data.get("time") || "—"}`,
@@ -722,6 +755,17 @@ function LifePointHome() {
                   <option value="LifePoint Medical Centre — Mayors Walk">LifePoint Medical Centre — Mayors Walk</option>
                   <option value="Ringpharm Manor Med Pharmacy — Manor">Inside Ringpharm Manor Med Pharmacy — Manor</option>
                   <option value="LifePoint consulting room — inside Bakumed Pharmacy (availability to be confirmed)">Inside Bakumed Pharmacy — Boshoff Street (confirm availability)</option>
+                </select>
+              </div>
+              <div className="form-group">
+                <label htmlFor="practitioner-choice">Preferred Practitioner (optional)</label>
+                <select id="practitioner-choice" name="practitioner" defaultValue="">
+                  <option value="">Any available practitioner</option>
+                  {careTeam.map((person) => (
+                    <option key={person.id} value={`${person.name} — ${person.role}`}>
+                      {person.name} — {person.role}
+                    </option>
+                  ))}
                 </select>
               </div>
               <div className="form-row">
@@ -751,7 +795,7 @@ function LifePointHome() {
                 <label htmlFor="message">Message (optional)</label>
                 <textarea id="message" name="message" placeholder="Appointment preferences or general questions. Please avoid sensitive medical details." />
               </div>
-              <p className="booking-note">Your request opens in WhatsApp. The practice will confirm availability at your selected location. Please avoid sharing ID numbers or medical records.</p>
+              <p className="booking-note">Your request opens in WhatsApp. Reception will confirm your practitioner, service and consulting location. Please avoid sharing ID numbers or medical records.</p>
               <Button type="submit" className="btn btn-solid appointment-submit">
                 Request via WhatsApp
               </Button>
@@ -834,13 +878,14 @@ function LifePointHome() {
           <div className="footer-grid">
             <div className="footer-brand">
               <img src={logoAsset.url} alt="LifePoint Medical Centre" />
-              <p>Family GP care at Mayors Walk and Manor, with a new consulting room inside Bakumed Pharmacy on Boshoff Street. Your health, our focus.</p>
+              <p>Family GP care with Dr T. Mncwango and Dr M. Luthuli, with dietitian support from Njabulo Mvundla. Mayors Walk · Manor · Boshoff Street. Your health, our focus.</p>
             </div>
             <div className="footer-col">
               <h4>Practice</h4>
               <ul>
                 <li><a href="#services" onClick={handleNav("services")}>Services</a></li>
                 <li><a href="#about" onClick={handleNav("about")}>About the Practice</a></li>
+                <li><a href="#team" onClick={handleNav("team")}>Meet Our Care Team</a></li>
                 <li><a href="#patient-info" onClick={handleNav("patient-info")}>Patient Info</a></li>
                 <li><a href="#contact" onClick={handleNav("contact")}>Book Appointment</a></li>
               </ul>
