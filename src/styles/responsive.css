@@ -1,0 +1,131 @@
+/* Keep intrinsic form and grid widths inside the viewport. */
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+body > div,
+main,
+section,
+.section-inner,
+.hero-inner,
+.footer-inner {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.hero-grid > *,
+.about-grid > *,
+.services-grid > *,
+.info-grid > *,
+.why-grid > *,
+.questions-layout > *,
+.contact-grid > *,
+.form-row > *,
+.footer-grid > *,
+.care-team-grid > * {
+  min-width: 0;
+}
+
+.contact-form,
+.form-group {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.hero-meta-item > a,
+.hero-meta-item > span,
+.contact-method a,
+.footer-col a {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 960px) {
+  .hero-grid,
+  .about-grid,
+  .contact-grid,
+  .location-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  section,
+  .why,
+  .promise,
+  .trust-strip,
+  .footer {
+    padding-inline: 1rem;
+  }
+
+  .nav-inner {
+    padding-inline: 1rem;
+  }
+
+  .hero {
+    padding-inline: 1rem;
+  }
+
+  .services-grid,
+  .info-grid,
+  .why-grid,
+  .footer-grid,
+  .credentials,
+  .questions-layout,
+  .form-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .trust-inner {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .contact-form,
+  .contact-method,
+  .care-team-card,
+  .location-card-copy,
+  .service-card,
+  .info-card,
+  .hero-card {
+    padding: 1.25rem;
+  }
+
+  .btn {
+    min-width: 0;
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .btn > svg {
+    flex-shrink: 0;
+  }
+
+  h1,
+  h2,
+  h3,
+  .care-team-note,
+  .location-tag,
+  .hero-eyebrow {
+    overflow-wrap: anywhere;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    font-size: 1rem;
+  }
+}
