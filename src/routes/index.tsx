@@ -513,8 +513,6 @@ function LifePointHome() {
         </div>
       </section>
 
-      <CareTeam whatsappLink={WA_LINK} />
-
       {/* Family Promise band */}
       <section className="promise" aria-label="Our promise">
         <div className="promise-inner">
@@ -555,6 +553,8 @@ function LifePointHome() {
           </div>
         </div>
       </section>
+
+      <CareTeam whatsappLink={WA_LINK} />
 
       {/* Why */}
       <section className="why" id="why">
