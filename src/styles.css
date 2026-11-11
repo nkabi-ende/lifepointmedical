@@ -3,6 +3,7 @@
 @import "./styles/lifepoint.css";
 @import "./styles/care-team.css";
 @import "./styles/responsive.css";
+@import "./styles/hero-refresh.css";
 @source "../src";
 
 @custom-variant dark (&:is(.dark *));

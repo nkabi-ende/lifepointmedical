@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 const logoAsset = { url: "/images/lifepoint-logo.webp" };
 import { Button } from "@/components/ui/button";
 import { CareTeam } from "@/components/CareTeam";
-import { careTeam } from "@/lib/care-team";
+import { careTeam, practitionerSelectionLabel, visitingAppointments } from "@/lib/care-team";
 import { SITE_URL, SHARE_IMAGE, PRACTICE_TITLE, PRACTICE_DESCRIPTION, practiceSchema, patientQuestions } from "@/lib/practice-seo";
 
 export const Route = createFileRoute("/")({
@@ -132,11 +132,11 @@ const services = [
         <path d="M16 3.13a4 4 0 0 1 0 7.75" />
       </>
     ),
-    title: "Special Interest in Pediatrics",
+    title: "Visiting Paediatrician",
     items: [
-      "Infant & child wellness screening",
-      "Immunisations & growth monitoring",
-      "Acute pediatric consultations",
+      "Visiting consultations once a month",
+      "Available upon booking",
+      "Reception confirms the next date, venue and fees",
     ],
   },
   {
@@ -159,7 +159,7 @@ const services = [
     items: [
       "Physician-supervised programmes",
       "Metabolic & bloodwork assessment",
-      "Dietitian support with Njabulo Mvundla",
+      "Dietitian support with Njabulo Mvundla, upon booking",
     ],
   },
   {
@@ -183,10 +183,24 @@ const services = [
         <path d="M4 21 15 10" />
       </>
     ),
+    title: "Dermatology with Dr Cele",
+    items: [
+      "Visiting dermatologist",
+      "Last Sunday of every month, upon booking",
+      "Confirm the venue, appointment time and specialist fees",
+    ],
+  },
+  {
+    icon: (
+      <>
+        <path d="M20 4c-8-1-15 3-15 10a5 5 0 0 0 5 5c7 0 11-7 10-15z" />
+        <path d="M4 21 15 10" />
+      </>
+    ),
     title: "Dietitian & Nutrition Support",
     items: [
       "Consultations with Njabulo Mvundla",
-      "Personalised nutrition and weight-management support",
+      "Nutrition and weight-management support, upon booking",
       "Practice no. DT 1208241",
     ],
   },
@@ -250,9 +264,11 @@ const credentials = [
 function LifePointHome() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [practitionerId, setPractitionerId] = useState("");
   const [loading, setLoading] = useState(true);
   const [loaderGone, setLoaderGone] = useState(false);
   const rootRef = useRef<HTMLDivElement | null>(null);
+  const selectedPractitioner = careTeam.find((person) => person.id === practitionerId);
 
   useEffect(() => {
     const done = () => setLoading(false);
@@ -360,14 +376,19 @@ function LifePointHome() {
       <section className="hero" id="hero">
         <div className="hero-inner hero-grid">
           <div className="hero-copy">
-            <span className="hero-eyebrow reveal">Family GP · Pietermaritzburg · New Boshoff Street consulting room</span>
-            <h1 className="reveal reveal-delay-1">LifePoint Medical Centre</h1>
+            <span className="hero-eyebrow reveal">Family GP & visiting specialists · Pietermaritzburg</span>
+            <h1 className="hero-title reveal reveal-delay-1" aria-label="LifePoint Medical Centre">
+              <span className="hero-title-brand">Life<span className="hero-title-accent">Point</span></span>{" "}
+              <span className="hero-title-description">Medical Centre</span>
+            </h1>
             <span className="hero-slogan reveal reveal-delay-2">Your health, our focus.</span>
             <p className="hero-sub reveal reveal-delay-2">
-              Family GP care with Dr T. Mncwango and Dr M. Luthuli, with dietitian support from Njabulo Mvundla. Find us at Mayors Walk and our in-pharmacy consulting rooms in Manor and Boshoff Street. Reception will confirm your practitioner, service and location when booking.
+              GP care with Dr T. Mncwango and Dr M. Luthuli, visiting dermatology with Dr Cele,
+              monthly paediatric consultations and dietitian support upon booking.
+              Our primary practice is at Mayors Walk, with additional consulting rooms in Manor and Boshoff Street.
             </p>
             <div className="hero-badge reveal reveal-delay-3">
-              Now open — accepting new patients
+              Accepting new patients · Appointments via WhatsApp
             </div>
             <div className="hero-ctas reveal reveal-delay-3">
               <a
@@ -398,7 +419,7 @@ function LifePointHome() {
                   <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
                   <path d="M7 11V7a5 5 0 0 1 10 0v4" />
                 </svg>
-                <span>Medical Aid & Cash Accepted</span>
+                <span>Most medical aids & cash accepted</span>
               </div>
             </div>
           </div>
@@ -406,7 +427,7 @@ function LifePointHome() {
           {/* At-a-glance card */}
           <aside className="hero-card reveal reveal-delay-2" aria-label="Practice at a glance">
             <div className="hero-card-header">
-              <span className="hero-card-eyebrow">Mayors Walk consulting hours</span>
+              <span className="hero-card-eyebrow">Primary practice · Mayors Walk</span>
               <span className="hero-card-status"><span className="hero-card-dot" /> Open 7 days</span>
             </div>
             <div className="hero-card-hours">
@@ -414,17 +435,18 @@ function LifePointHome() {
               <div className="hours-row"><span className="hours-day">Saturday</span><span>08:00 – 14:00</span></div>
               <div className="hours-row"><span className="hours-day">Sunday</span><span>08:00 – 14:00</span></div>
             </div>
-            <p className="location-hours-note">For Manor consulting times, please enquire before visiting.</p>
+            <p className="location-hours-note">GP consulting hours. Confirm availability at Manor and Boshoff Street before visiting.</p>
             <div className="hero-card-divider" />
-            <span className="hero-card-eyebrow">Popular care</span>
-            <div className="hero-chip-row">
-              <span className="hero-chip">General Practice</span>
-              <span className="hero-chip">ECG & Chest Pain</span>
-              <span className="hero-chip">IV Drips</span>
-              <span className="hero-chip">Bloods & DNA</span>
-              <span className="hero-chip">Weight Loss</span>
-              <span className="hero-chip">Family Planning</span>
+            <span className="hero-card-eyebrow">Visiting & booked appointments</span>
+            <div className="hero-visiting-list">
+              {visitingAppointments.map((person) => (
+                <a key={person.id} href={`#${person.id}`} onClick={handleNav(person.id)}>
+                  <span>{person.role === "Dermatologist" ? "Dr Cele · Dermatology" : person.role === "Paediatrician" ? "Paediatrics" : "Dietitian"}</span>
+                  <strong>{person.availability}</strong>
+                </a>
+              ))}
             </div>
+            <p className="hero-visiting-note">Specialists are available upon booking. Reception confirms the date, venue and fees.</p>
             <a
               href={WA_LINK("Hello LifePoint Medical Centre, I'd like to enquire about an appointment.")}
               target="_blank"
@@ -729,7 +751,7 @@ function LifePointHome() {
                   `Name: ${data.get("name") || "—"}`,
                   `Phone: ${data.get("phone") || "—"}`,
                   `Preferred surgery: ${data.get("location") || "—"}`,
-                  `Preferred practitioner: ${data.get("practitioner") || "Any available practitioner"}`,
+                  `Preferred practitioner: ${practitionerSelectionLabel(String(data.get("practitioner") || ""))}`,
                   `Payment: ${data.get("payment") || "—"}`,
                   `Preferred date: ${data.get("date") || "—"}`,
                   `Preferred time: ${data.get("time") || "—"}`,
@@ -759,14 +781,20 @@ function LifePointHome() {
               </div>
               <div className="form-group">
                 <label htmlFor="practitioner-choice">Preferred Practitioner (optional)</label>
-                <select id="practitioner-choice" name="practitioner" defaultValue="">
+                <select id="practitioner-choice" name="practitioner" value={practitionerId} onChange={(e) => setPractitionerId(e.target.value)} aria-describedby={selectedPractitioner?.availability ? "practitioner-availability" : undefined}>
                   <option value="">Any available practitioner</option>
                   {careTeam.map((person) => (
-                    <option key={person.id} value={`${person.name} — ${person.role}`}>
-                      {person.name} — {person.role}
+                    <option key={person.id} value={person.id}>
+                      {practitionerSelectionLabel(person.id)}
                     </option>
                   ))}
                 </select>
+                {selectedPractitioner?.availability && (
+                  <p className="practitioner-availability" id="practitioner-availability" role="status">
+                    <strong>{selectedPractitioner.availability}.</strong>{" "}{selectedPractitioner.bookingNote}
+                    {selectedPractitioner.kind === "specialist" && " Your preferred date is an enquiry; reception will confirm the visiting clinic appointment."}
+                  </p>
+                )}
               </div>
               <div className="form-row">
                 <div className="form-group">
@@ -878,7 +906,7 @@ function LifePointHome() {
           <div className="footer-grid">
             <div className="footer-brand">
               <img src={logoAsset.url} alt="LifePoint Medical Centre" />
-              <p>Family GP care with Dr T. Mncwango and Dr M. Luthuli, with dietitian support from Njabulo Mvundla. Mayors Walk · Manor · Boshoff Street. Your health, our focus.</p>
+              <p>GP care with Dr T. Mncwango and Dr M. Luthuli, visiting dermatologist Dr Cele, monthly paediatric consultations and dietitian Njabulo Mvundla upon booking. Mayors Walk · Manor · Boshoff Street. Your health, our focus.</p>
             </div>
             <div className="footer-col">
               <h4>Practice</h4>

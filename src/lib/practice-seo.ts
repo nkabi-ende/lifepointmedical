@@ -3,12 +3,14 @@ import { careTeam, MEDICAL_PRACTICE_NUMBER } from "./care-team";
 export const SITE_URL = "https://lifepointmedical.co.za";
 export const SHARE_IMAGE = `${SITE_URL}/images/lifepoint-social.png`;
 export const PRACTICE_TITLE = "LifePoint Medical Centre | GP in Pietermaritzburg";
-export const PRACTICE_DESCRIPTION = "Family GP care in Pietermaritzburg with Dr T. Mncwango and Dr M. Luthuli, plus dietitian Njabulo Mvundla. Mayors Walk, Manor and Boshoff Street consulting locations. Confirm practitioner and service availability via WhatsApp.";
+export const PRACTICE_DESCRIPTION = "GP care in Pietermaritzburg with Dr T. Mncwango and Dr M. Luthuli. Visiting dermatologist Dr Cele, monthly paediatric visits and dietitian appointments. Enquire via WhatsApp.";
 
 // These answers are also rendered on the page; keep the two in sync.
 export const patientQuestions = [
-  { question: "Which doctors consult at LifePoint Medical Centre?", answer: "Our GP team includes Dr T. Mncwango and Dr M. Luthuli (Penuel Mondi Luthuli). You can request your preferred doctor when booking. Reception will confirm the doctor's availability and consulting location." },
-  { question: "Can I book a dietitian at LifePoint?", answer: "Yes. Enquire about a consultation with Njabulo Mvundla, Dietitian, practice no. DT 1208241, for nutrition and weight-management support. Reception will confirm availability and consulting location." },
+  { question: "Which doctors consult at LifePoint Medical Centre?", answer: "Our GP team includes Dr T. Mncwango and Dr M. Luthuli (Penuel Mondi Luthuli). Dr Cele visits as a dermatologist on the last Sunday of every month, upon booking. A visiting paediatrician consults once a month, also upon booking. Reception confirms each practitioner's availability, consulting venue and fees." },
+  { question: "When can I see Dr Cele, dermatologist?", answer: "Dr Cele offers visiting dermatology consultations on the last Sunday of every month, available upon booking. Contact LifePoint Medical Centre via WhatsApp to request an appointment and confirm the consulting venue, time, specialist fees and medical aid cover." },
+  { question: "Is a paediatrician available at LifePoint?", answer: "A visiting paediatrician consults once a month, available upon booking. Reception will confirm the next visiting date, the practitioner, consulting venue, time and fees. Please enquire before visiting; this is separate from the daily GP consulting hours." },
+  { question: "Can I book a dietitian at LifePoint?", answer: "Yes. Njabulo Mvundla, Dietitian, practice no. DT 1208241, is available upon booking for nutrition and weight-management support. Reception will confirm your appointment time, fees and consulting location." },
   { question: "Where does Dr T. Mncwango consult in Pietermaritzburg?", answer: "Dr T. Mncwango has two established consulting locations: LifePoint Medical Centre, Unit 02, Mayors Walk Centre, 68 Mayors Walk Road; and a consulting room inside Ringpharm Manor Med Pharmacy, 2 Ohrtmann Road, Manor. A new separate LifePoint consulting room inside Bakumed Pharmacy on 31 Boshoff Street is being prepared; please confirm availability before visiting." },
   { question: "Where is the new Manor consulting room?", answer: "The Manor consulting room is inside Ringpharm Manor Med Pharmacy, 2 Ohrtmann Road, Manor, Pietermaritzburg, 3201. It is separate from the Mayors Walk surgery. Please request an appointment via WhatsApp before visiting." },
   { question: "Where is the new Bakumed consulting room?", answer: "The new LifePoint consulting room is inside Bakumed Pharmacy, Shop 2, 31 Boshoff Street (Total Garage), Pietermaritzburg, 3201. LifePoint is not taking over the pharmacy. The consultation start date and hours are not confirmed yet. Please contact LifePoint via WhatsApp before visiting." },
@@ -33,7 +35,7 @@ export const practiceSchema = {
       medicalSpecialty: "PrimaryCare",
       email: "info@lifepointmedical.co.za",
       areaServed: ["Pietermaritzburg", "Mayors Walk", "Manor", "Boshoff Street", "Pietermaritzburg CBD", "Hayfields", "Prestbury", "Blackridge", "Boughton", "Clarendon"].map(name => ({ "@type": "Place", name })),
-      employee: careTeam.map((person) => ({ "@id": `${SITE_URL}/#${person.id === "dr-mncwango" ? "doctor" : person.id}` })),
+      member: careTeam.filter((person) => !person.unnamed).map((person) => ({ "@id": `${SITE_URL}/#${person.id === "dr-mncwango" ? "doctor" : person.id}` })),
       identifier: { "@type": "PropertyValue", propertyID: "Medical practice number", value: MEDICAL_PRACTICE_NUMBER },
       subOrganization: { "@id": `${SITE_URL}/#manor-consulting-room` },
       telephone: "+27603196884",
@@ -89,7 +91,9 @@ export const practiceSchema = {
     },
     { "@type": "Person", "@id": `${SITE_URL}/#doctor`, name: "Dr T. Mncwango", jobTitle: "General Practitioner", worksFor: { "@id": `${SITE_URL}/#practice` }, workLocation: [{ "@id": `${SITE_URL}/#practice` }, { "@id": `${SITE_URL}/#manor-consulting-room` }], url: `${SITE_URL}/#about` },
     { "@type": "Person", "@id": `${SITE_URL}/#dr-luthuli`, name: "Dr M. Luthuli", alternateName: "Penuel Mondi Luthuli", jobTitle: "General Practitioner", worksFor: { "@id": `${SITE_URL}/#practice` }, url: `${SITE_URL}/#dr-luthuli` },
-    { "@type": "Person", "@id": `${SITE_URL}/#njabulo-mvundla`, name: "Njabulo Mvundla", jobTitle: "Dietitian", identifier: { "@type": "PropertyValue", propertyID: "Practice number", value: "DT 1208241" }, worksFor: { "@id": `${SITE_URL}/#practice` }, url: `${SITE_URL}/#njabulo-mvundla` },
+    { "@type": "Person", "@id": `${SITE_URL}/#njabulo-mvundla`, name: "Njabulo Mvundla", jobTitle: "Dietitian", description: "Dietitian consultations available upon booking. Reception confirms the appointment time and consulting venue.", identifier: { "@type": "PropertyValue", propertyID: "Practice number", value: "DT 1208241" }, worksFor: { "@id": `${SITE_URL}/#practice` }, url: `${SITE_URL}/#njabulo-mvundla` },
+    { "@type": "Person", "@id": `${SITE_URL}/#dr-cele`, name: "Dr Cele", jobTitle: "Dermatologist", description: "Visiting dermatologist on the last Sunday of every month, available upon booking. Reception confirms venue, time and specialist fees.", affiliation: { "@id": `${SITE_URL}/#practice` }, url: `${SITE_URL}/#dr-cele` },
+    { "@type": "Service", "@id": `${SITE_URL}/#visiting-paediatrician`, name: "Visiting paediatric consultations", serviceType: "Paediatric consultations", description: "Once a month, available upon booking. Reception confirms the next visiting date, practitioner, venue and fees.", provider: { "@id": `${SITE_URL}/#practice` }, areaServed: "Pietermaritzburg", url: `${SITE_URL}/#visiting-paediatrician` },
     { "@type": "FAQPage", "@id": `${SITE_URL}/#questions`, mainEntity: patientQuestions.map(({ question, answer }) => ({ "@type": "Question", name: question, acceptedAnswer: { "@type": "Answer", text: answer } })) },
     { "@type": "WebSite", "@id": `${SITE_URL}/#website`, name: "LifePoint Medical Centre", url: `${SITE_URL}/`, publisher: { "@id": `${SITE_URL}/#practice` } },
     { "@type": "WebPage", "@id": `${SITE_URL}/#webpage`, url: `${SITE_URL}/`, name: PRACTICE_TITLE, description: PRACTICE_DESCRIPTION, isPartOf: { "@id": `${SITE_URL}/#website` }, about: { "@id": `${SITE_URL}/#practice` }, inLanguage: "en-ZA", primaryImageOfPage: { "@type": "ImageObject", url: SHARE_IMAGE, width: 1200, height: 630 } },

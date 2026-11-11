@@ -26,6 +26,46 @@
   gap: 1.5rem;
 }
 
+.care-team-group + .care-team-group {
+  margin-top: 2rem;
+}
+.care-team-group-label {
+  font:
+    600 0.7rem "Inter",
+    sans-serif;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--grey);
+  margin-bottom: 1rem;
+}
+.care-team-grid--gp {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.care-team-availability {
+  display: flex;
+  gap: 0.65rem;
+  padding: 1rem;
+  margin: 0 0 1.25rem;
+  background: #f0f8f6;
+  border-left: 2px solid var(--accent-readable);
+  color: var(--accent-readable);
+  line-height: 1.6;
+}
+.care-team-availability > svg {
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+.care-team-availability strong {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.care-team-availability p {
+  color: var(--grey);
+  font-size: 0.76rem;
+  margin-top: 0.35rem;
+}
+
 .care-team-card {
   display: flex;
   flex-direction: column;
